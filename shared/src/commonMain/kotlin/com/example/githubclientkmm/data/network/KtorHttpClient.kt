@@ -13,8 +13,8 @@ import io.ktor.client.statement.readText
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.URLProtocol
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
+//import java.net.SocketTimeoutException
+//import java.net.UnknownHostException
 import kotlinx.serialization.json.Json
 
 val ktorHttpClient: HttpClient
@@ -35,9 +35,9 @@ val ktorHttpClient: HttpClient
         }
         HttpResponseValidator {
             handleResponseException { exception ->
-                if (exception is UnknownHostException
-                    || exception is SocketTimeoutException
-                ) throw ConnectionException(exception)
+//                if (exception is UnknownHostException
+//                    || exception is SocketTimeoutException
+//                ) throw ConnectionException(exception)
                 if (exception !is ResponseException) throw UnknownException(
                     code = 0,
                     body = exception.message ?: "",
