@@ -36,10 +36,11 @@ class AppRepository {
     suspend fun signIn(token: String): Unit {
         val storage = KeyValueStorage()
         storage.authToken = null
-        try{
+        try {
             api.getUser(token = token)
         } catch (e: RuntimeException) {
-            Napier.d("error", e, "AAA")
+            Napier.e("error", e, "AAA")
+            throw e
         }
     }
 
