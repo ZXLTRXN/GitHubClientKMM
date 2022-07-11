@@ -1,6 +1,7 @@
 package com.example.githubclientkmm.data.network
 
 import com.example.githubclientkmm.data.KeyValueStorage
+import com.russhwolf.settings.Settings
 import io.ktor.client.HttpClient
 import io.ktor.client.features.HttpResponseValidator
 import io.ktor.client.features.ResponseException
@@ -29,7 +30,7 @@ val ktorHttpClient: HttpClient
             url.protocol = URLProtocol.HTTPS
             host = APIService.BASE_HOST
             header(HttpHeaders.Accept, "application/vnd.github.v3+json")
-            KeyValueStorage().authToken?.let { token ->
+            KeyValueStorage(Settings()).authToken?.let { token -> /////////////////////// settings hardcoded
                 header(HttpHeaders.Authorization, "token $token")
             }
         }

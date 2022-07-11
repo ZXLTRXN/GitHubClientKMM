@@ -8,12 +8,12 @@ import com.example.githubclientkmm.data.network.UnknownException
 import com.example.githubclientkmm.data.network.UnknownRequestException
 import platform.Foundation.NSError
 
-sealed class CustomError(){
+sealed class CustomError {
     class Unauthorized(val code: Int, val body: String): CustomError()
     class Forbidden(val code: Int, val body: String): CustomError()
     class NotFound(val code: Int, val body: String): CustomError()
     class UnknownRequest(val code: Int, val body: String): CustomError()
-    class Unknown(message: String): CustomError()
+    class Unknown(val message: String): CustomError()
     object Connection: CustomError()
 }
 

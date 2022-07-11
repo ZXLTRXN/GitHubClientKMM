@@ -1,16 +1,43 @@
 PODS:
+  - MaterialComponents/ActivityIndicator (124.2.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 4.0)
+  - MaterialComponents/Palettes (124.2.0)
+  - MaterialComponents/private/Application (124.2.0)
+  - MDFInternationalization (3.0.0)
+  - MotionAnimator (4.0.1):
+    - MotionInterchange (~> 3.0)
+  - MotionInterchange (3.0.0)
   - shared (1.0)
+  - SwiftyMarkdown (1.2.4)
 
 DEPENDENCIES:
+  - MaterialComponents/ActivityIndicator (= 124.2.0)
   - shared (from `../shared`)
+  - SwiftyMarkdown (= 1.2.4)
+
+SPEC REPOS:
+  trunk:
+    - MaterialComponents
+    - MDFInternationalization
+    - MotionAnimator
+    - MotionInterchange
+    - SwiftyMarkdown
 
 EXTERNAL SOURCES:
   shared:
     :path: "../shared"
 
 SPEC CHECKSUMS:
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
+  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
+  MotionAnimator: 5f99d7c9592928c0f28a66283eda9c3b657dc480
+  MotionInterchange: 13adae439b377e31d1674cc165539d50e1d1566a
   shared: db3ed1590fdbc9588e4f3bf2f62fdfc6b8476473
+  SwiftyMarkdown: 7cdec87c6ab5cd9ea0e22ced288e889960649ba5
 
-PODFILE CHECKSUM: b58051bdbff087f8b50f3100b92b431a1bcd9430
+PODFILE CHECKSUM: b56204333b1ad8bd080bed21c593f2e7d9dcc477
 
 COCOAPODS: 1.11.3

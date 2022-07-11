@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="iosApp" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="UFI-uL-35l" id="dCN-4d-dOV"/>
+                <outlet property="errorLabel" destination="rJY-ZA-4bb" id="vOy-Ll-sJ1"/>
+                <outlet property="signInButton" destination="UOO-O7-vVz" id="6ww-gR-Muu"/>
+                <outlet property="tokenTextField" destination="Tvh-Ht-NuG" id="2b5-gP-5vN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOO-O7-vVz">
+                    <rect key="frame" x="16" y="812" width="382" height="32"/>
+                    <color key="backgroundColor" name="GreenButton"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="signInTapped:" destination="-1" eventType="touchUpInside" id="gZE-QE-MAz"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-i7-7HI">
+                    <rect key="frame" x="159" y="117" width="96" height="96"/>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvh-Ht-NuG" customClass="TextFieldWithPadding" customModule="iosApp" customModuleProvider="target">
+                    <rect key="frame" x="16" y="275" width="382" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                    <connections>
+                        <action selector="editingChanged:" destination="-1" eventType="editingChanged" id="mgW-bz-gLS"/>
+                    </connections>
+                </textField>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJY-ZA-4bb">
+                    <rect key="frame" x="16" y="315" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" name="ErrorRed"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFI-uL-35l" customClass="MDCActivityIndicator">
+                    <rect key="frame" x="194" y="815" width="26.5" height="26.5"/>
+                    <color key="backgroundColor" name="GreenButton"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UOO-O7-vVz" secondAttribute="trailing" constant="16" id="D2O-uH-H9b"/>
+                <constraint firstItem="rJY-ZA-4bb" firstAttribute="leading" secondItem="Tvh-Ht-NuG" secondAttribute="leading" id="F8d-4Q-tYI"/>
+                <constraint firstItem="UFI-uL-35l" firstAttribute="centerY" secondItem="UOO-O7-vVz" secondAttribute="centerY" id="GpG-di-vPB"/>
+                <constraint firstItem="Tvh-Ht-NuG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Nup-NJ-Gyc"/>
+                <constraint firstItem="HHb-i7-7HI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PCv-VM-uxQ"/>
+                <constraint firstItem="UFI-uL-35l" firstAttribute="centerX" secondItem="UOO-O7-vVz" secondAttribute="centerX" id="QfN-6Q-tiP"/>
+                <constraint firstItem="UOO-O7-vVz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Tvh-Ht-NuG" secondAttribute="bottom" constant="26" id="a5q-kA-c5i"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UOO-O7-vVz" secondAttribute="bottom" constant="18" id="hCQ-Sw-5Gt" customClass="KeyboardAwareAnimatedConstraint" customModule="iosApp" customModuleProvider="target"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Tvh-Ht-NuG" secondAttribute="trailing" constant="16" id="idW-fK-Wsj"/>
+                <constraint firstItem="HHb-i7-7HI" firstAttribute="top" relation="lessThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="73" id="pfd-zG-n5f"/>
+                <constraint firstItem="UOO-O7-vVz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="pfr-HK-hPX"/>
+                <constraint firstItem="rJY-ZA-4bb" firstAttribute="top" secondItem="Tvh-Ht-NuG" secondAttribute="bottom" constant="6" id="rAO-U1-Na6"/>
+                <constraint firstItem="Tvh-Ht-NuG" firstAttribute="top" secondItem="HHb-i7-7HI" secondAttribute="bottom" constant="62" id="rQC-Wg-p2X"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="UFI-uL-35l">
+            <size key="intrinsicContentSize" width="26.5" height="26.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="logo" width="96" height="96"/>
+        <namedColor name="ErrorRed">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GreenButton">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

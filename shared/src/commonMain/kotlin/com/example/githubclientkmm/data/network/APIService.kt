@@ -1,16 +1,13 @@
 package com.example.githubclientkmm.data.network
 
 import com.example.githubclientkmm.data.network.models.RepoNetwork
-import io.github.aakira.napier.DebugAntilog
-import io.github.aakira.napier.Napier
+import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.http.HttpHeaders
 
-class APIService() {
-    private val client = ktorHttpClient
-
+class APIService(private val client: HttpClient) {
     suspend fun getUser(token: String): RepoNetwork.Owner =
         client.get(path = "user") {
             header(HttpHeaders.Authorization, "token $token")

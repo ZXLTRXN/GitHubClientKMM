@@ -2,4 +2,6 @@ target 'iosApp' do
   use_frameworks!
   platform :ios, '13.0'
   pod 'shared', :path => '../shared'
+  pod 'MaterialComponents/ActivityIndicator', '124.2.0'
+  pod 'SwiftyMarkdown', '1.2.4'
 end

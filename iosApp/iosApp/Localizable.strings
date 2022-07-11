@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  iosApp
+
+  Created by Ilya Shevtsov on 11.07.2022.
+  Copyright © 2022 orgName. All rights reserved.
+*/
+"auth.signInButton.title" = "Sign In";
+"auth.tokenTextField.placeholder" = "Personal access token";
+"auth.inputErrorLabel.invalidToken.title" = "Invalid token";
+"auth.inputErrorLabel.emptyToken.title" = "Empty token";
+
+"reposList.screenTitle" = "Repositories";
+
+"repoDetails.licenseLabel.title" = "License";
+"repoDetails.licenseLabelWithValue.noLicense.title" = "—";
+"repoDetails.forksLabel.title" = "forks";
+"repoDetails.starsLabel.title" = "stars";
+"repoDetails.watchersLabel.title" = "watchers";
+"repoDetails.readmeLabel.emptyReadme.title" = "Empty README.md";
+
+"errorAlert.title" = "Error";
+"errorAlert.okButton.title" = "Ok";
+
+"errorType.connectionError.description" = "Connection error";
+"errorType.connectionError.suggestion" = "Check your Internet connection";
+"errorType.wrongToken.description" = "Wrong token";
+"errorType.wrongToken.suggestion" = "Check your token validity";
+"errorType.noRights.description" = "No rights";
+"errorType.noRights.suggestion" = "Grant permissions to the token";
+"errorType.readmeNotFound.description" = "No README.md";
+"errorType.readmeNotFound.suggestion" = "Add README.md to the repository";
+"errorType.noRepositories.description" = "Empty";
+"errorType.noRepositories.suggestion" = "No repositories at the moment";
+"errorType.unknownError.description" = "Something error";
+"errorType.unknownError.suggestion" = "Check your something";
+"errorType.unknownError.failureReasonWithCode" = "error data: %@ / error code: %d\ninformation for developers";
+"errorType.unknownError.failureReason" = "error data: %@\ninformation for developers";
+
+"errorView.reloadButton.refresh.title" = "Refresh";
+"errorView.reloadButton.retry.title" = "Retry";

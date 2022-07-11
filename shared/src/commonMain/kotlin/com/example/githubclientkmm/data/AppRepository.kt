@@ -4,9 +4,10 @@ import com.example.githubclientkmm.data.network.APIService
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 
-class AppRepository {
-    private val api = APIService()
-    private val storage = KeyValueStorage()
+class AppRepository(
+    private val api: APIService,
+    private val storage: KeyValueStorage
+    ) {
 
     init {
         Napier.base(DebugAntilog())
