@@ -39,18 +39,16 @@ val ktorHttpClient: HttpClient
 //                    || exception is SocketTimeoutException
 //                ) throw ConnectionException(exception)
                 if (exception !is ResponseException) throw UnknownException(
-                    code = 0,
-                    body = exception.message ?: "",
                     cause = exception
                 )
                 val response = exception.response
                 when (response.status) {
-                    HttpStatusCode.Unauthorized -> throw NotFoundException(
+                    HttpStatusCode.NotFound -> throw NotFoundException(
                         code = response.status.value,
                         body = response.readText(),
                         cause = exception
                     )
-                    HttpStatusCode.NotFound -> throw UnauthorizedException(
+                    HttpStatusCode.Unauthorized -> throw UnauthorizedException(
                         code = response.status.value,
                         body = response.readText(),
                         cause = exception
@@ -60,7 +58,7 @@ val ktorHttpClient: HttpClient
                         body = response.readText(),
                         cause = exception
                     )
-                    else -> throw UnknownException(
+                    else -> throw UnknownRequestException(
                         code = response.status.value,
                         body = response.readText(),
                         cause = exception

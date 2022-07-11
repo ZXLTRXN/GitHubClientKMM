@@ -13,6 +13,12 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    val ktorVersion = "1.6.8"
+    val coroutineVersion = "1.6.0-native-mt"
+    val serializationVersion = "1.3.3"
+    val multiplatformSettingsVersion = "0.9"
+    val napierVersion = "2.6.1"
+
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
@@ -23,17 +29,15 @@ kotlin {
         }
     }
 
-    val ktorVersion = "1.6.8"
-    val serializationVersion = "1.3.3"
-    val multiplatformSettingsVersion = "0.9"
-    val napierVersion = "2.6.1"
-
     sourceSets {
         val commonMain by getting {
             dependencies {
+                //KTOR
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+
                 implementation("com.russhwolf:multiplatform-settings-no-arg:$multiplatformSettingsVersion")
                 implementation("io.github.aakira:napier:$napierVersion")
             }
@@ -53,6 +57,9 @@ kotlin {
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:$ktorVersion")
+            }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
@@ -62,9 +69,6 @@ kotlin {
         val iosArm64Test by getting
         val iosSimulatorArm64Test by getting
         val iosTest by creating {
-            dependencies {
-                implementation("io.ktor:ktor-client-ios:$ktorVersion")
-            }
             dependsOn(commonTest)
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)

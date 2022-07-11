@@ -14,17 +14,33 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .red
         
-//        let repo = AppRepository()
-//        repo.signIn(token: "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"){ [weak self] error in
-//            print(error)
-//            if error == nil {
-//                self?.test.text = "aaaaaa"
-//            }
-//        }
+        let repo = AppRepository()
+        repo.signIn(token: "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"){ [weak self] error in
+            if let error = error {
+                var message: String
+                guard let kotlinExc = error.asKotlin() else {
+                    return
+                }
+
+                if kotlinExc is CustomError.Unauthorized {
+                    message = "unAuth"
+                } else {
+                    message = "else"
+                }
+                self?.test.text = message
+                return
+            }
+            
+            
+            self?.test.text = "all right"
+        }
         
+
     }
+    
 }
+
 

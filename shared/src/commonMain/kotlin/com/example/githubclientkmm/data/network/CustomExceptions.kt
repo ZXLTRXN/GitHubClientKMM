@@ -22,8 +22,12 @@ class NotFoundException(
     cause: Throwable
 ): RuntimeException(cause)
 
-class UnknownException(
+class UnknownRequestException(
     val code: Int,
     val body: String,
     cause: Throwable
 ): RuntimeException("Unknown status code: $code in http response with body: $body", cause)
+
+class UnknownException(
+    cause: Throwable
+): RuntimeException("Unknown Kotlin exception", cause)

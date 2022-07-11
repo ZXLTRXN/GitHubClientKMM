@@ -2,12 +2,11 @@ package com.example.githubclientkmm.android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.githubclientkmm.Greeting
 import android.widget.TextView
 import com.example.githubclientkmm.data.AppRepository
-import com.example.githubclientkmm.data.network.APIService
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 fun greet(): String {
@@ -18,12 +17,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val tv: TextView = findViewById(R.id.text_view)
         GlobalScope.launch {
-            AppRepository().signIn("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")
+            try {
+                AppRepository().signIn("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")
+                Log.d("AAA", "onCreate: aaaaa")
+
+            } catch (e: RuntimeException) {
+                Log.e("AAA", "onCreate: $e")
+            }
         }
 
-
-        val tv: TextView = findViewById(R.id.text_view)
         tv.text = greet()
     }
 }

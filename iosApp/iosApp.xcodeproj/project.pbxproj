@@ -14,6 +14,7 @@
 		C2B0F4C728791EAB006D0845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4C628791EAB006D0845 /* Assets.xcassets */; };
 		C2B0F4CA28791EAB006D0845 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4C828791EAB006D0845 /* LaunchScreen.storyboard */; };
 		C2B0F4D028792313006D0845 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4CF28792313006D0845 /* ViewController.xib */; };
+		C2B0F4D6287BDEDE006D0845 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		C2B0F4C928791EAB006D0845 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2B0F4CB28791EAB006D0845 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B0F4CF28792313006D0845 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
 		CB6E29A3AD81A63F054E6128 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				C2B0F4C828791EAB006D0845 /* LaunchScreen.storyboard */,
 				C2B0F4CB28791EAB006D0845 /* Info.plist */,
 				C2B0F4CF28792313006D0845 /* ViewController.xib */,
+				C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			files = (
 				C2B0F4C228791EAA006D0845 /* ViewController.swift in Sources */,
 				C2B0F4BE28791EAA006D0845 /* AppDelegate.swift in Sources */,
+				C2B0F4D6287BDEDE006D0845 /* ErrorExtensions.swift in Sources */,
 				C2B0F4C028791EAA006D0845 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

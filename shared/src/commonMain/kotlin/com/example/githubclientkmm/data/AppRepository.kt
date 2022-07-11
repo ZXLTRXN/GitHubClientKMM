@@ -1,13 +1,12 @@
 package com.example.githubclientkmm.data
 
-import com.example.githubclientkmm.data.models.Repo
 import com.example.githubclientkmm.data.network.APIService
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
-import io.ktor.network.sockets.SocketTimeoutException
 
 class AppRepository {
     private val api = APIService()
+    private val storage = KeyValueStorage()
 
     init {
         Napier.base(DebugAntilog())
@@ -33,15 +32,13 @@ class AppRepository {
 //    }
 
     @Throws(Exception::class)
-    suspend fun signIn(token: String): Unit {
-        val storage = KeyValueStorage()
-        storage.authToken = null
-        try {
-            api.getUser(token = token)
-        } catch (e: RuntimeException) {
-            Napier.e("error", e, "AAA")
-            throw e
-        }
+    suspend fun signIn(token: String) {
+        signOut()
+        api.getUser(token = token)
+        storage.authToken = token
     }
 
+    fun signOut() {
+        storage.authToken = null
+    }
 }
