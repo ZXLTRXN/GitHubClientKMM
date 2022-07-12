@@ -1,5 +1,6 @@
 package com.example.githubclientkmm.data.network.models
 
+import com.example.githubclientkmm.data.models.Repo
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -25,4 +26,19 @@ data class RepoNetwork(
     data class Owner(
         @SerialName("login") val name: String
     )
+
+    fun asRepo(): Repo = Repo(
+            id = this.id,
+            owner = this.owner.name,
+            name = this.name,
+            htmlUrl = this.htmlUrl,
+            description = this.description,
+            language = this.language,
+            license = this.license?.name,
+            languageColor = "#FFFFFF",
+            forks = this.forks,
+            stars = this.stars,
+            watchers = this.watchers,
+            branch = this.branch
+        )
 }

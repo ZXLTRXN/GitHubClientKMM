@@ -6,10 +6,6 @@ import android.util.Log
 import com.example.githubclientkmm.Greeting
 import android.widget.TextView
 import com.example.githubclientkmm.DI
-import com.example.githubclientkmm.data.AppRepository
-import com.example.githubclientkmm.data.KeyValueStorage
-import com.example.githubclientkmm.data.network.APIService
-import com.example.githubclientkmm.data.network.ktorHttpClient
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

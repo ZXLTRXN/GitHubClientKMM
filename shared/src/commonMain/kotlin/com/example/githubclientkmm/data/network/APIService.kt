@@ -28,6 +28,14 @@ class APIService(private val client: HttpClient) {
     ): RepoNetwork =
         client.get(path = "/repos/$ownerName/$repoName")
 
+    suspend fun getRepositoryReadme(
+        ownerName: String,
+        repoName: String,
+        branchName: String
+    ): String {
+        return "aaaaaa"
+    }
+
     companion object {
         const val BASE_HOST = "api.github.com"
         const val BASE_README_HOST = "raw.githubusercontent.com"
