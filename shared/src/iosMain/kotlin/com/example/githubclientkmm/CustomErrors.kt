@@ -9,12 +9,12 @@ import com.example.githubclientkmm.data.network.UnknownRequestException
 import platform.Foundation.NSError
 
 sealed class CustomError {
-    class Unauthorized(val code: Int, val body: String): CustomError()
-    class Forbidden(val code: Int, val body: String): CustomError()
-    class NotFound(val code: Int, val body: String): CustomError()
-    class UnknownRequest(val code: Int, val body: String): CustomError()
-    class Unknown(val message: String): CustomError()
-    object Connection: CustomError()
+    class Unauthorized(val code: Int, val body: String) : CustomError()
+    class Forbidden(val code: Int, val body: String) : CustomError()
+    class NotFound(val code: Int, val body: String) : CustomError()
+    class UnknownRequest(val code: Int, val body: String) : CustomError()
+    class Unknown(val message: String) : CustomError()
+    object Connection : CustomError()
 }
 
 fun NSError.getKotlinException(): CustomError? {

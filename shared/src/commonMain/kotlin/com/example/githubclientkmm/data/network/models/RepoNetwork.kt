@@ -28,16 +28,16 @@ data class RepoNetwork(
     )
 
     fun asRepo(): Repo = Repo(
-            id = this.id,
-            owner = this.owner.name,
-            name = this.name,
-            htmlUrl = this.htmlUrl,
-            description = this.description,
-            language = this.language,
-            license = this.license?.name,
-            forks = this.forks,
-            stars = this.stars,
-            watchers = this.watchers,
-            branch = this.branch
-        )
+        id = this.id,
+        owner = this.owner.name,
+        name = this.name,
+        htmlUrl = this.htmlUrl,
+        description = this.description,
+        language = this.language,
+        license = this.license?.name,
+        forks = this.forks,
+        stars = this.stars,
+        watchers = this.watchers,
+        branch = this.branch
+    )
 }

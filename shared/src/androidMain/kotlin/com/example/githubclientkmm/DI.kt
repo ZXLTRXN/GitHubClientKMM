@@ -12,7 +12,7 @@ object DI {
     private val settings: Settings = Settings()
     private val jsonClient: HttpClient = jsonHttpClient
     private val defaultClient: HttpClient = readmeHttpClient
-    private val api: APIService =  APIService(jsonClient)
+    private val api: APIService = APIService(jsonClient)
 
     val storage: KeyValueStorage = KeyValueStorage(settings)
     val appRepo: AppRepository = AppRepository(api = api, storage = storage)
