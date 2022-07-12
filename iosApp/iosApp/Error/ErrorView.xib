@@ -22,35 +22,42 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="somethingError" translatesAutoresizingMaskIntoConstraints="NO" id="bvE-uU-p5L">
-                    <rect key="frame" x="165" y="386" width="84" height="84"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="84" id="UZX-wZ-LL4"/>
-                        <constraint firstAttribute="height" constant="84" id="j5x-dl-ykq"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//Something Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qn-Zs-Ufg">
-                    <rect key="frame" x="140.5" y="490" width="133.5" height="19.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                    <color key="textColor" name="ErrorRed"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//make something" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z5-KK-cmb">
-                    <rect key="frame" x="150" y="513.5" width="114.5" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HZA-sl-MML">
+                    <rect key="frame" x="0.0" y="44" width="414" height="144.5"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="somethingError" translatesAutoresizingMaskIntoConstraints="NO" id="bvE-uU-p5L">
+                            <rect key="frame" x="165" y="0.0" width="84" height="84"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="84" id="UZX-wZ-LL4"/>
+                                <constraint firstAttribute="height" constant="84" id="j5x-dl-ykq"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xwu-9Q-ctf">
+                            <rect key="frame" x="140.5" y="104" width="133.5" height="40.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//Something Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qn-Zs-Ufg">
+                                    <rect key="frame" x="0.0" y="0.0" width="133.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                    <color key="textColor" name="ErrorRed"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//make something" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z5-KK-cmb">
+                                    <rect key="frame" x="9.5" y="23.5" width="114.5" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="5z5-KK-cmb" firstAttribute="top" secondItem="9Qn-Zs-Ufg" secondAttribute="bottom" constant="4" id="4b1-ny-MO2"/>
-                <constraint firstItem="bvE-uU-p5L" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DcY-dh-7CI"/>
-                <constraint firstItem="9Qn-Zs-Ufg" firstAttribute="centerX" secondItem="bvE-uU-p5L" secondAttribute="centerX" id="EhK-Br-2Jk"/>
-                <constraint firstItem="bvE-uU-p5L" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="fGs-EE-egw"/>
-                <constraint firstItem="5z5-KK-cmb" firstAttribute="centerX" secondItem="bvE-uU-p5L" secondAttribute="centerX" id="hAl-mF-gfV"/>
-                <constraint firstItem="9Qn-Zs-Ufg" firstAttribute="top" secondItem="bvE-uU-p5L" secondAttribute="bottom" constant="20" id="zGe-2z-AZU"/>
+                <constraint firstItem="HZA-sl-MML" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="P4O-eo-gPq"/>
+                <constraint firstItem="HZA-sl-MML" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Rhx-8t-GWT"/>
+                <constraint firstItem="HZA-sl-MML" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rqc-Zq-X1k"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
         </view>

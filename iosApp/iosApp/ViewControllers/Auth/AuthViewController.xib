@@ -58,7 +58,7 @@
                     <color key="textColor" name="ErrorRed"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFI-uL-35l" customClass="MDCActivityIndicator">
+                <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFI-uL-35l" customClass="MDCActivityIndicator">
                     <rect key="frame" x="194" y="815" width="26.5" height="26.5"/>
                     <color key="backgroundColor" name="GreenButton"/>
                 </view>
@@ -83,11 +83,6 @@
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
         </view>
     </objects>
-    <designables>
-        <designable name="UFI-uL-35l">
-            <size key="intrinsicContentSize" width="26.5" height="26.5"/>
-        </designable>
-    </designables>
     <resources>
         <image name="logo" width="96" height="96"/>
         <namedColor name="ErrorRed">

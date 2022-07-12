@@ -14,6 +14,7 @@ class RepositoriesListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var errorView: ErrorView!
     @IBOutlet private weak var activityIndicator: MDCActivityIndicator!
+    @IBOutlet private weak var reloadButton: UIButton!
     
     private let appRepo = DI.shared.appRepo
     
@@ -29,11 +30,14 @@ class RepositoriesListViewController: UIViewController {
         getData()
     }
     
+    @IBAction func reloadButtonTapped(_ sender: UIButton) {
+        getData()
+    }
+    
     private func setUI() {
         tableView.register(UINib(nibName: String(describing: RepositoryTableViewCell.self), bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
         activityIndicator.setColor()
-        activityIndicator.radius = 28
         
         title = NSLocalizedString("reposList.screenTitle", comment: "")
         navigationItem.backButtonTitle = ""
@@ -45,21 +49,33 @@ class RepositoriesListViewController: UIViewController {
         appRepo.getRepositories { [weak self] repos, error in
             self?.activityIndicator.hide()
             if let repos = repos {
-//                self?.hideErrorView(self?.errorView)
                 self?.repos = repos
+                guard !repos.isEmpty else {
+                    self?.showEmptinessErrorView(self?.errorView)
+                    self?.reloadButton.isHidden = false
+                    self?.reloadButton.setTitle(NSLocalizedString("errorView.reloadButton.refresh.title", comment: ""), for: .normal)
+                    self?.tableView.isHidden = true
+                    return
+                }
+                self?.hideErrorView(self?.errorView)
+                self?.reloadButton.isHidden = true
                 self?.tableView.reloadData()
                 self?.tableView.isHidden = false
                 return
             }
             
             if let error = error {
-//                self?.showErrorView(self?.errorView, error: error) { self?.getData() }
+                guard let kotlinExc = error.asKotlin() else { return }
+                self?.showErrorView(self?.errorView, for: kotlinExc)
+                self?.reloadButton.isHidden = false
+                self?.reloadButton.setTitle(NSLocalizedString("errorView.reloadButton.retry.title", comment: ""), for: .normal)
+                self?.tableView.isHidden = true
             }
         }
     }
     
     private func loadingStart() {
-//        hideErrorView(errorView)
+        hideErrorView(errorView)
         tableView.isHidden = true
         activityIndicator.show()
     }

@@ -11,6 +11,8 @@
 "auth.inputErrorLabel.emptyToken.title" = "Empty token";
 
 "reposList.screenTitle" = "Repositories";
+"reposList.noRepositories.description" = "Empty";
+"reposList.noRepositories.suggestion" = "No repositories at the moment";
 
 "repoDetails.licenseLabel.title" = "License";
 "repoDetails.licenseLabelWithValue.noLicense.title" = "—";
@@ -30,8 +32,6 @@
 "errorType.noRights.suggestion" = "Grant permissions to the token";
 "errorType.readmeNotFound.description" = "No README.md";
 "errorType.readmeNotFound.suggestion" = "Add README.md to the repository";
-"errorType.noRepositories.description" = "Empty";
-"errorType.noRepositories.suggestion" = "No repositories at the moment";
 "errorType.unknownError.description" = "Something error";
 "errorType.unknownError.suggestion" = "Check your something";
 "errorType.unknownError.failureReasonWithCode" = "error data: %@ / error code: %d\ninformation for developers";

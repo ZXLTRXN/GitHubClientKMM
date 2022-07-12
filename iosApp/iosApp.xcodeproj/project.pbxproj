@@ -24,7 +24,7 @@
 		C2B0F4F8287C1B05006D0845 /* UIViewCotrollerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4F1287C1B05006D0845 /* UIViewCotrollerExtensions.swift */; };
 		C2B0F4FD287C1B6C006D0845 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4FA287C1B6C006D0845 /* ErrorView.swift */; };
 		C2B0F4FE287C1B6C006D0845 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */; };
-		C2B0F4FF287C1B6C006D0845 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4FC287C1B6C006D0845 /* RequestError.swift */; };
+		C2B0F4FF287C1B6C006D0845 /* CustomErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4FC287C1B6C006D0845 /* CustomErrorExtensions.swift */; };
 		C2B0F502287C2AA3006D0845 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F501287C2AA3006D0845 /* Localizable.strings */; };
 		C2DE6F6F287D2BFE00BADC76 /* RepositoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE6F6B287D2BFE00BADC76 /* RepositoriesListViewController.swift */; };
 		C2DE6F70287D2BFE00BADC76 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE6F6C287D2BFE00BADC76 /* RepositoryTableViewCell.swift */; };
@@ -55,7 +55,7 @@
 		C2B0F4F1287C1B05006D0845 /* UIViewCotrollerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewCotrollerExtensions.swift; sourceTree = "<group>"; };
 		C2B0F4FA287C1B6C006D0845 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
-		C2B0F4FC287C1B6C006D0845 /* RequestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		C2B0F4FC287C1B6C006D0845 /* CustomErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomErrorExtensions.swift; sourceTree = "<group>"; };
 		C2B0F501287C2AA3006D0845 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C2DE6F6B287D2BFE00BADC76 /* RepositoriesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewController.swift; sourceTree = "<group>"; };
 		C2DE6F6C287D2BFE00BADC76 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			children = (
 				C2B0F4FA287C1B6C006D0845 /* ErrorView.swift */,
 				C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */,
-				C2B0F4FC287C1B6C006D0845 /* RequestError.swift */,
+				C2B0F4FC287C1B6C006D0845 /* CustomErrorExtensions.swift */,
 				C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */,
 			);
 			path = Error;
@@ -313,7 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B0F4FF287C1B6C006D0845 /* RequestError.swift in Sources */,
+				C2B0F4FF287C1B6C006D0845 /* CustomErrorExtensions.swift in Sources */,
 				C2DE6F76287D2CB700BADC76 /* RepositoryDetailInfoViewController.swift in Sources */,
 				C2B0F4F8287C1B05006D0845 /* UIViewCotrollerExtensions.swift in Sources */,
 				C2B0F4BE28791EAA006D0845 /* AppDelegate.swift in Sources */,

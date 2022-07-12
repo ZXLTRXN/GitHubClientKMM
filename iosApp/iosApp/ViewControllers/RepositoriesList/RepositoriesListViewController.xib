@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +14,7 @@
             <connections>
                 <outlet property="activityIndicator" destination="sC9-FK-Zer" id="Mal-IV-qLb"/>
                 <outlet property="errorView" destination="rXp-vH-FuP" id="KJT-Dx-UAX"/>
+                <outlet property="reloadButton" destination="jGu-6a-qu6" id="WJM-J2-bLL"/>
                 <outlet property="tableView" destination="LMR-5E-G1p" id="8fI-L9-SV2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,8 +29,11 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXp-vH-FuP" customClass="ErrorView" customModule="iosApp" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="373" width="414" height="150"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="m0i-Ng-aK9"/>
+                    </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-FK-Zer" customClass="MDCActivityIndicator">
                     <rect key="frame" x="179" y="420" width="56" height="56"/>
@@ -37,31 +42,56 @@
                         <constraint firstAttribute="height" constant="56" id="PfO-rX-eWR"/>
                         <constraint firstAttribute="width" constant="56" id="w2Y-jk-psx"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                            <integer key="value" value="28"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGu-6a-qu6">
+                    <rect key="frame" x="16" y="812" width="382" height="32"/>
+                    <color key="backgroundColor" name="GreenButton"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="reloadButtonTapped:" destination="-1" eventType="touchUpInside" id="6FB-qT-e2I"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="sC9-FK-Zer" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2K5-PN-ZfQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jGu-6a-qu6" secondAttribute="bottom" constant="18" id="Gwz-qO-ca8"/>
+                <constraint firstItem="jGu-6a-qu6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="KuF-5t-ejj"/>
+                <constraint firstItem="rXp-vH-FuP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Lgn-Ne-XZN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LMR-5E-G1p" secondAttribute="bottom" id="PhK-4w-N94"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rXp-vH-FuP" secondAttribute="bottom" id="TZ9-0m-SME"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LMR-5E-G1p" secondAttribute="trailing" id="UnI-AD-50o"/>
+                <constraint firstItem="rXp-vH-FuP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Zwt-6u-MRN"/>
                 <constraint firstItem="LMR-5E-G1p" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hUW-jV-QRg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jGu-6a-qu6" secondAttribute="trailing" constant="16" id="k9j-hq-jHX"/>
                 <constraint firstItem="LMR-5E-G1p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mh3-JM-fh0"/>
-                <constraint firstItem="rXp-vH-FuP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rrL-mS-jKQ"/>
                 <constraint firstItem="sC9-FK-Zer" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tZ1-I9-sQE"/>
-                <constraint firstItem="rXp-vH-FuP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="yOf-1K-oI4"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rXp-vH-FuP" secondAttribute="trailing" id="zBL-L8-beY"/>
+                <constraint firstItem="rXp-vH-FuP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wgn-jc-VHN"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
         </view>
     </objects>
-    <designables>
-        <designable name="sC9-FK-Zer">
-            <size key="intrinsicContentSize" width="26.5" height="26.5"/>
-        </designable>
-    </designables>
     <resources>
+        <namedColor name="GreenButton">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

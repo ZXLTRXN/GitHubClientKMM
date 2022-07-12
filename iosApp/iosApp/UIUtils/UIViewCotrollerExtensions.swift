@@ -10,37 +10,37 @@ import UIKit
 import shared
 
 extension UIViewController {
-//    func showErrorView(_ errorView: ErrorView!, error: RequestError) {
-//        var image: UIImage
-//        var color: UIColor
-//        var buttonTitle: String
-//
-//        switch error {
-//        case .noRepositories:
-//            image = UIImage(named: "empty")!
-//            color = UIColor(named: "DefaultBlue")!
-//            buttonTitle = NSLocalizedString("errorView.reloadButton.refresh.title", comment: "")
-//        case .noInternet:
-//            image = UIImage(named: "connectionError")!
-//            color = UIColor(named: "ErrorRed")!
-//            buttonTitle = NSLocalizedString("errorView.reloadButton.retry.title", comment: "")
-//        default:
-//            image = UIImage(named: "somethingError")!
-//            color = UIColor(named: "ErrorRed")!
-//            buttonTitle = NSLocalizedString("errorView.reloadButton.retry.title", comment: "")
-//        }
-//
-//        errorView.setUI(
-//            image: image, description: error.errorDescription!,
-//            suggestion: error.recoverySuggestion!,
-//            color: color
-//        )
-//        errorView.isHidden = false
-//    }
+    func showErrorView(_ errorView: ErrorView!,for error: CustomError) {
+        var image: UIImage
+        
+        if error is CustomError.Connection {
+            image = UIImage(named: "connectionError")!
+        } else {
+            image = UIImage(named: "somethingError")!
+        }
+        
+        errorView.setUI(
+            image: image,
+            description: error.errorDescription!,
+            suggestion: error.recoverySuggestion!,
+            color: UIColor(named: "ErrorRed")!
+        )
+        errorView.isHidden = false
+    }
     
-//    func hideErrorView(_ errorView: ErrorView!){
-//        errorView.isHidden = true
-//    }
+    func showEmptinessErrorView(_ errorView: ErrorView!) {
+        errorView.setUI(
+            image: UIImage(named: "empty")!,
+            description: NSLocalizedString("reposList.noRepositories.description", comment: ""),
+            suggestion: NSLocalizedString("reposList.noRepositories.suggestion", comment: ""),
+            color: UIColor(named: "DefaultBlue")!
+        )
+        errorView.isHidden = false
+    }
+    
+    func hideErrorView(_ errorView: ErrorView!){
+        errorView.isHidden = true
+    }
     
     func showAlert(title: String, msg: String, sender: UIView) {
         let alertController = UIAlertController(
