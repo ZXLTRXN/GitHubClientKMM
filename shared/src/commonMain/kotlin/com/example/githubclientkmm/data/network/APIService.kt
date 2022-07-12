@@ -7,9 +7,12 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.http.HttpHeaders
 
-class APIService(private val client: HttpClient) {
+class APIService(
+    private val jsonClient: HttpClient,
+    private val readmeClient: HttpClient
+) {
     suspend fun getUser(token: String): RepoNetwork.Owner =
-        client.get(path = "user") {
+        jsonClient.get(path = "user") {
             header(HttpHeaders.Authorization, "token $token")
         }
 
@@ -17,7 +20,7 @@ class APIService(private val client: HttpClient) {
         sort: String = "updated",
         amount: Int = REPOSITORIES_AMOUNT
     ): List<RepoNetwork> =
-        client.get(path = "user/repos") {
+        jsonClient.get(path = "user/repos") {
             parameter("sort", sort)
             parameter("per_page", amount)
         }
@@ -26,14 +29,14 @@ class APIService(private val client: HttpClient) {
         ownerName: String,
         repoName: String
     ): RepoNetwork =
-        client.get(path = "/repos/$ownerName/$repoName")
+        jsonClient.get(path = "/repos/$ownerName/$repoName")
 
     suspend fun getRepositoryReadme(
         ownerName: String,
         repoName: String,
         branchName: String
     ): String {
-        return "aaaaaa"
+        return readmeClient.get("$ownerName/$repoName/$branchName/README.md")
     }
 
     companion object {

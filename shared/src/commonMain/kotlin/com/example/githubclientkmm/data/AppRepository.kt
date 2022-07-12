@@ -2,8 +2,10 @@ package com.example.githubclientkmm.data
 
 import com.example.githubclientkmm.data.models.Repo
 import com.example.githubclientkmm.data.network.APIService
+import com.example.githubclientkmm.data.network.ConnectionException
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
+import io.ktor.utils.io.errors.IOException
 
 class AppRepository(
     private val api: APIService,
@@ -28,7 +30,9 @@ class AppRepository(
         ownerName: String,
         repoName: String,
         branchName: String
-    ): String = api.getRepositoryReadme(ownerName, repoName, branchName)
+    ): String =
+        api.getRepositoryReadme(ownerName, repoName, branchName)
+//        throw ConnectionException(IOException("aaaaaa"))
 
 
     @Throws(Exception::class)
