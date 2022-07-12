@@ -3,15 +3,10 @@ package com.example.githubclientkmm.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.githubclientkmm.Greeting
 import android.widget.TextView
 import com.example.githubclientkmm.DI
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
-fun greet(): String {
-    return Greeting().greeting()
-}
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +19,11 @@ class MainActivity : AppCompatActivity() {
                 Log.d("AAA", "onCreate: aaaaa")
 
             } catch (e: RuntimeException) {
-                Log.e("AAA", "onCreate: $e")
+                Log.e("AAA", "onCreate: ${e}")
+                Log.e("AAA", "onCreate: ${e.cause?.message}")
             }
         }
 
-        tv.text = greet()
+        tv.text = "aaaaaaaaaaaaaa"
     }
 }

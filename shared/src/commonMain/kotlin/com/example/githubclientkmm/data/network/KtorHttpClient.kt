@@ -15,8 +15,7 @@ import io.ktor.client.statement.readText
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.URLProtocol
-//import java.net.SocketTimeoutException
-//import java.net.UnknownHostException
+import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.json.Json
 
 val jsonHttpClient: HttpClient
@@ -53,14 +52,16 @@ private fun getRequestBuilder(baseHost: String): HttpRequestBuilder.() -> Unit =
 }
 
 private val exceptionHandler: suspend (Throwable) -> Unit = { exception ->
-//                if (exception is UnknownHostException
-//                    || exception is SocketTimeoutException
-//                ) throw ConnectionException(exception)
+    if (exception is IOException) throw ConnectionException(cause = exception)
     if (exception !is ResponseException) throw UnknownException(
         cause = exception
     )
     val response = exception.response
     when (response.status) {
+        HttpStatusCode.GatewayTimeout,
+        HttpStatusCode.RequestTimeout -> throw ConnectionException(
+            cause = exception
+        )
         HttpStatusCode.NotFound -> throw NotFoundException(
             code = response.status.value,
             body = response.readText(),
