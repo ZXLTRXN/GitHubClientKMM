@@ -26,6 +26,12 @@
 		C2B0F4FE287C1B6C006D0845 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */; };
 		C2B0F4FF287C1B6C006D0845 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4FC287C1B6C006D0845 /* RequestError.swift */; };
 		C2B0F502287C2AA3006D0845 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F501287C2AA3006D0845 /* Localizable.strings */; };
+		C2DE6F6F287D2BFE00BADC76 /* RepositoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE6F6B287D2BFE00BADC76 /* RepositoriesListViewController.swift */; };
+		C2DE6F70287D2BFE00BADC76 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE6F6C287D2BFE00BADC76 /* RepositoryTableViewCell.swift */; };
+		C2DE6F71287D2BFE00BADC76 /* RepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DE6F6D287D2BFE00BADC76 /* RepositoryTableViewCell.xib */; };
+		C2DE6F72287D2BFE00BADC76 /* RepositoriesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DE6F6E287D2BFE00BADC76 /* RepositoriesListViewController.xib */; };
+		C2DE6F76287D2CB700BADC76 /* RepositoryDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE6F74287D2CB700BADC76 /* RepositoryDetailInfoViewController.swift */; };
+		C2DE6F77287D2CB700BADC76 /* RepositoryDetailInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DE6F75287D2CB700BADC76 /* RepositoryDetailInfoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +57,12 @@
 		C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		C2B0F4FC287C1B6C006D0845 /* RequestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		C2B0F501287C2AA3006D0845 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C2DE6F6B287D2BFE00BADC76 /* RepositoriesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewController.swift; sourceTree = "<group>"; };
+		C2DE6F6C287D2BFE00BADC76 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		C2DE6F6D287D2BFE00BADC76 /* RepositoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryTableViewCell.xib; sourceTree = "<group>"; };
+		C2DE6F6E287D2BFE00BADC76 /* RepositoriesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoriesListViewController.xib; sourceTree = "<group>"; };
+		C2DE6F74287D2CB700BADC76 /* RepositoryDetailInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailInfoViewController.swift; sourceTree = "<group>"; };
+		C2DE6F75287D2CB700BADC76 /* RepositoryDetailInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryDetailInfoViewController.xib; sourceTree = "<group>"; };
 		CB6E29A3AD81A63F054E6128 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,9 +107,9 @@
 		C2B0F4BC28791EAA006D0845 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				C2DE6F79287D2CD400BADC76 /* ViewControllers */,
 				C2B0F500287C1B70006D0845 /* Error */,
 				C2B0F4F9287C1B0A006D0845 /* UIUtils */,
-				C2B0F4EA287C1A51006D0845 /* Auth */,
 				C2B0F4BD28791EAA006D0845 /* AppDelegate.swift */,
 				C2B0F4BF28791EAA006D0845 /* SceneDelegate.swift */,
 				C2B0F4C628791EAB006D0845 /* Assets.xcassets */,
@@ -140,6 +152,36 @@
 				C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		C2DE6F73287D2C0300BADC76 /* RepositoriesList */ = {
+			isa = PBXGroup;
+			children = (
+				C2DE6F6B287D2BFE00BADC76 /* RepositoriesListViewController.swift */,
+				C2DE6F6E287D2BFE00BADC76 /* RepositoriesListViewController.xib */,
+				C2DE6F6C287D2BFE00BADC76 /* RepositoryTableViewCell.swift */,
+				C2DE6F6D287D2BFE00BADC76 /* RepositoryTableViewCell.xib */,
+			);
+			path = RepositoriesList;
+			sourceTree = "<group>";
+		};
+		C2DE6F78287D2CBB00BADC76 /* RepositoryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				C2DE6F74287D2CB700BADC76 /* RepositoryDetailInfoViewController.swift */,
+				C2DE6F75287D2CB700BADC76 /* RepositoryDetailInfoViewController.xib */,
+			);
+			path = RepositoryDetails;
+			sourceTree = "<group>";
+		};
+		C2DE6F79287D2CD400BADC76 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C2B0F4EA287C1A51006D0845 /* Auth */,
+				C2DE6F73287D2C0300BADC76 /* RepositoriesList */,
+				C2DE6F78287D2CBB00BADC76 /* RepositoryDetails */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CE74F46B633ADABE2A870FBF /* Pods */ = {
@@ -213,7 +255,10 @@
 			files = (
 				C2B0F502287C2AA3006D0845 /* Localizable.strings in Resources */,
 				C2B0F4E9287C1A4A006D0845 /* AuthViewController.xib in Resources */,
+				C2DE6F72287D2BFE00BADC76 /* RepositoriesListViewController.xib in Resources */,
 				C2B0F4CA28791EAB006D0845 /* LaunchScreen.storyboard in Resources */,
+				C2DE6F71287D2BFE00BADC76 /* RepositoryTableViewCell.xib in Resources */,
+				C2DE6F77287D2CB700BADC76 /* RepositoryDetailInfoViewController.xib in Resources */,
 				C2B0F4C728791EAB006D0845 /* Assets.xcassets in Resources */,
 				C2B0F4FE287C1B6C006D0845 /* ErrorView.xib in Resources */,
 			);
@@ -269,9 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B0F4FF287C1B6C006D0845 /* RequestError.swift in Sources */,
+				C2DE6F76287D2CB700BADC76 /* RepositoryDetailInfoViewController.swift in Sources */,
 				C2B0F4F8287C1B05006D0845 /* UIViewCotrollerExtensions.swift in Sources */,
 				C2B0F4BE28791EAA006D0845 /* AppDelegate.swift in Sources */,
+				C2DE6F70287D2BFE00BADC76 /* RepositoryTableViewCell.swift in Sources */,
 				C2B0F4F3287C1B05006D0845 /* KeyboardAwareAnimatedConstraint.swift in Sources */,
+				C2DE6F6F287D2BFE00BADC76 /* RepositoriesListViewController.swift in Sources */,
 				C2B0F4F4287C1B05006D0845 /* UIControlExtensions.swift in Sources */,
 				C2B0F4E8287C1A4A006D0845 /* AuthViewController.swift in Sources */,
 				C2B0F4F2287C1B05006D0845 /* MDCActivityIndicatorExtensions.swift in Sources */,

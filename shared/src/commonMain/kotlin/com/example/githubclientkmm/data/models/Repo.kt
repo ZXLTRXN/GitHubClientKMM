@@ -8,7 +8,7 @@ data class Repo(
     val description: String? = null,
     val language: String? = null,
     val license: String? = null,
-    val languageColor: String? = null,
+    val languageColor: String = "#FFFFFF",
     val forks: Int = 0,
     val stars: Int = 0,
     val watchers: Int = 0,

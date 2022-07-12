@@ -68,7 +68,7 @@ class AuthViewController: UIViewController {
             appRepo.signIn(token: token){ [weak self] error in
                 self?.onLoading(started: false)
                 guard let error = error else {
-                    // self?.navigationController?.setViewControllers([RepositoriesListViewController()], animated: true)
+                     self?.navigationController?.setViewControllers([RepositoriesListViewController()], animated: true)
                     return
                 }
                 

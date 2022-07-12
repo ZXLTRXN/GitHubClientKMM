@@ -35,7 +35,6 @@ data class RepoNetwork(
             description = this.description,
             language = this.language,
             license = this.license?.name,
-            languageColor = "#FFFFFF",
             forks = this.forks,
             stars = this.stars,
             watchers = this.watchers,

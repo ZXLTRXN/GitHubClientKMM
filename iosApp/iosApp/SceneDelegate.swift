@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import shared
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,13 +28,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func chooseStartScreen() {
-//        let storage = KeyValueStorage.shared
-//        if storage.authToken == nil {
-//            navController.viewControllers = [AuthViewController()]
-//        } else {
-//            navController.viewControllers = [RepositoriesListViewController()]
-//        }
-        navController.viewControllers = [AuthViewController()]
+        let storage = DI.shared.storage
+        if storage.authToken == nil {
+            navController.viewControllers = [AuthViewController()]
+        } else {
+            navController.viewControllers = [RepositoriesListViewController()]
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
