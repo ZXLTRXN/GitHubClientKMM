@@ -6,7 +6,11 @@ import com.example.githubclientkmm.android.R
 import com.example.githubclientkmm.android.utils.LocalizeString
 import com.example.githubclientkmm.android.utils.validateToken
 import com.example.githubclientkmm.data.AppRepository
-import com.zxltrxn.githubclient.data.network.RequestCode
+import com.example.githubclientkmm.data.network.ConnectionException
+import com.example.githubclientkmm.data.network.UnauthorizedException
+import com.example.githubclientkmm.data.network.UnknownException
+import com.example.githubclientkmm.data.network.UnknownRequestException
+import com.example.githubclientkmm.data.signInResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
@@ -70,17 +74,30 @@ class AuthViewModel @Inject constructor(
     private fun trySignIn() {
         viewModelScope.launch {
             _state.value = State.Loading
-            repository.signIn(token.value)
-//            when (val res = repository.signIn(token.value)) {
-//                is Resource.Success -> {
-//                    _actions.send(Action.RouteToMain)
-//                    _state.value = State.Idle
-//                }
-//                is Resource.Error -> {
-//                    _state.value = State.Idle
-//                    _actions.send(Action.ShowError(res.message, res.code))
-//                }
-//            }
+            repository.signInResult(token.value).onSuccess {
+                _actions.send(Action.RouteToMain)
+                _state.value = State.Idle
+            }.onFailure { exc ->
+                _state.value = State.Idle
+                val(msg, code) = when(exc){
+                    is ConnectionException -> {
+                        LocalizeString.Resource(R.string.network_error) to null
+                    }
+                    is UnauthorizedException -> {
+                        LocalizeString.Resource(R.string.wrong_token) to exc.code
+                    }
+                    is UnknownRequestException -> {
+                        LocalizeString.Resource(R.string.unknown_error) to exc.code
+                    }
+                    is UnknownException -> {
+                        LocalizeString.Raw(exc.cause!!.message!!) to null
+                    }
+                    else -> {
+                        LocalizeString.Raw(exc.message!!) to null
+                    }
+                }
+                _actions.send(Action.ShowError(msg, code))
+            }
         }
     }
 
@@ -91,7 +108,7 @@ class AuthViewModel @Inject constructor(
     }
 
     sealed interface Action {
-        data class ShowError(val message: LocalizeString, val code: RequestCode?) : Action
+        data class ShowError(val message: LocalizeString, val code: Int?) : Action
         object RouteToMain : Action
     }
 

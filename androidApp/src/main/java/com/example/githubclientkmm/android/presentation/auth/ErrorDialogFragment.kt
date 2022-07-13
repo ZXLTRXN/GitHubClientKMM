@@ -5,7 +5,7 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.example.githubclientkmm.android.R
-import com.zxltrxn.githubclient.data.network.RequestCode
+import com.example.githubclientkmm.data.network.RequestCode
 
 
 class ErrorDialogFragment() : DialogFragment() {
@@ -25,7 +25,7 @@ class ErrorDialogFragment() : DialogFragment() {
     }
 
     private fun defineMessage(message: String, code: Int?): String {
-        val codesForUser = listOf(RequestCode.NO_INTERNET_CODE.code, RequestCode.WRONG_TOKEN_CODE.code)
+        val codesForUser = listOf(RequestCode.NO_CONNECTION.code, RequestCode.UNAUTHORIZED.code)
         return if (code == null || code in codesForUser) message
         else "$message / $code"
     }

@@ -71,7 +71,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
             when (action) {
                 is Action.ShowError ->{
                     context?.let {
-                        showErrorDialog(action.message.getString(it), action.code?.code)
+                        showErrorDialog(action.message.getString(it), action.code)
                     }
                 }
                 is Action.RouteToMain -> navigateToRepositoriesList()
