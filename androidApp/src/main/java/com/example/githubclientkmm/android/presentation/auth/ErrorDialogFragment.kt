@@ -18,7 +18,7 @@ class ErrorDialogFragment() : DialogFragment() {
         val alertMessage = defineMessage(message, code)
 
         return AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.something_error_label))
+            .setTitle(getString(R.string.error_label))
             .setMessage(alertMessage)
             .setPositiveButton(R.string.btn_error_ok) { _, _ -> }
             .create()

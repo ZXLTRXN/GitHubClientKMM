@@ -77,23 +77,23 @@ class AuthViewModel @Inject constructor(
             repository.signInResult(token.value).onSuccess {
                 _actions.send(Action.RouteToMain)
                 _state.value = State.Idle
-            }.onFailure { exc ->
+            }.onFailure { exception ->
                 _state.value = State.Idle
-                val(msg, code) = when(exc){
+                val(msg, code) = when(exception){
                     is ConnectionException -> {
                         LocalizeString.Resource(R.string.network_error) to null
                     }
                     is UnauthorizedException -> {
-                        LocalizeString.Resource(R.string.wrong_token) to exc.code
+                        LocalizeString.Resource(R.string.wrong_token) to exception.code
                     }
                     is UnknownRequestException -> {
-                        LocalizeString.Resource(R.string.unknown_error) to exc.code
+                        LocalizeString.Resource(R.string.unknown_error) to exception.code
                     }
                     is UnknownException -> {
-                        LocalizeString.Raw(exc.cause!!.message!!) to null
+                        LocalizeString.Raw(exception.cause!!.message!!) to null
                     }
                     else -> {
-                        LocalizeString.Raw(exc.message!!) to null
+                        LocalizeString.Raw(exception.message!!) to null
                     }
                 }
                 _actions.send(Action.ShowError(msg, code))

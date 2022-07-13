@@ -27,7 +27,8 @@
     <string name="empty_error_label">Empty</string>
     <string name="empty_license">-</string>
     <string name="network_error_label">Network Error</string>
-    <string name="something_error_label">Error</string>
+    <string name="something_error_label">Something error</string>
+    <string name="something_error">Check your something</string>
     <string name="no_saved_token">No saved token</string>
     <string name="empty_repositories_list">Nothing to show, no repositories available</string>
     <string name="empty_readme">No README.md</string>
@@ -35,8 +36,9 @@
     <string name="browser_unavailable">Browser is unavailable</string>
     <string name="empty_server_data">No data</string>
     <string name="wrong_token">Wrong token</string>
-    <string name="service_unavailable">Service Unavailable</string>
+    <string name="service_unavailable">Service unavailable</string>
     <string name="no_rights">No rights to view</string>
     <string name="network_error">Check your Internet connection</string>
     <string name="unknown_error">Unknown error</string>
+    <string name="error_label">Error</string>
 </resources>

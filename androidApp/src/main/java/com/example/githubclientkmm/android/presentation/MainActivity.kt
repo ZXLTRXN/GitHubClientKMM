@@ -6,13 +6,14 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.githubclientkmm.android.R
+import com.example.githubclientkmm.data.KeyValueStorage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-//    @Inject
-//    lateinit var storage: KeyValueStorage
+    @Inject
+    lateinit var storage: KeyValueStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -21,8 +22,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         if (savedInstanceState == null) {
-//            val destinationId = if (storage.authToken != null) {
-            val destinationId = if (false) {
+            val destinationId = if (storage.authToken != null) {
                 R.id.repositoriesListFragment
             } else {
                 R.id.authFragment
