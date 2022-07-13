@@ -29,6 +29,8 @@ class RepositoryDetailInfoViewController: UIViewController {
     
     @IBOutlet private weak var errorView: ErrorView!
     @IBOutlet private weak var readmeErrorView: ErrorView!
+    @IBOutlet private weak var reloadButton: UIButton!
+    @IBOutlet private weak var readmeReloadButton: UIButton!
     
     @IBOutlet private weak var activityIndicator: MDCActivityIndicator!
     @IBOutlet private weak var readmeActivityIndicator: MDCActivityIndicator!
@@ -53,15 +55,15 @@ class RepositoryDetailInfoViewController: UIViewController {
     }
     
     private func getRepoInfo() {
-        loadingStart(content: contentStackView, errorView: errorView, indicator: activityIndicator)
+        loadingStart(content: contentStackView, errorView: errorView, reloadButton: reloadButton, indicator: activityIndicator)
         appRepo.getRepository(ownerName: repo.owner, repoName: repo.name) { [weak self] repo, error in
             self?.activityIndicator.hide()
             if let error = error {
-                self?.contentStackView.isHidden = true
-//                self?.showErrorView(self?.errorView, error: error) { self?.getRepoInfo() }
+                guard let kotlinExc = error.asKotlin() else { return }
+                self?.reloadButton.isHidden = false
+                self?.showErrorView(self?.errorView, for: kotlinExc)
                 return
             }
-//            self?.hideErrorView(self?.errorView)
             if let repo = repo {
                 self?.repo = repo
                 self?.updateRepoInfoUI()
@@ -71,19 +73,20 @@ class RepositoryDetailInfoViewController: UIViewController {
     }
     
     private func getReadmeAndUpdateUI() {
-        loadingStart(content: readmeLabel, errorView: readmeErrorView, indicator: readmeActivityIndicator)
+        loadingStart(content: readmeLabel, errorView: readmeErrorView, reloadButton: readmeReloadButton, indicator: readmeActivityIndicator)
         appRepo.getRepositoryReadme(ownerName: repo.owner, repoName: repo.name, branchName: repo.branch){ [weak self] (readme, error) in
             self?.readmeActivityIndicator.hide()
-//            if let error = error {
-//                if case .readmeNotFound = error {
-//                    self?.readmeLabel.text = error.errorDescription
-//                    self?.readmeLabel.isHidden = false
-//                    return
-//                }
-//                self?.showErrorView(self?.readmeErrorView, error: error) { self?.getReadmeAndUpdateUI() }
-//                return
-//            }
-//            self?.hideErrorView(self?.readmeErrorView)
+            if let error = error {
+                guard let kotlinExc = error.asKotlin() else { return }
+                if kotlinExc is CustomError.NotFound {
+                    self?.readmeLabel.text = NSLocalizedString("errorType.readmeNotFound.description", comment: "")
+                    self?.readmeLabel.isHidden = false
+                    return
+                }
+                self?.showErrorView(self?.readmeErrorView, for: kotlinExc)
+                self?.readmeReloadButton.isHidden = false
+                return
+            }
             self?.readmeLabel.isHidden = false
             if (readme ?? "").isEmpty {
                 self?.readmeLabel.text = NSLocalizedString("repoDetails.readmeLabel.emptyReadme.title", comment: "")
@@ -107,12 +110,11 @@ class RepositoryDetailInfoViewController: UIViewController {
         setExitButton()
         
         linkLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.linkPressed)))
+        reloadButton.setTitle(NSLocalizedString("errorView.reloadButton.retry.title", comment: ""), for: .normal)
+        readmeReloadButton.setTitle(NSLocalizedString("errorView.reloadButton.retry.title", comment: ""), for: .normal)
         
         activityIndicator.setColor()
-        activityIndicator.radius = 28
-        
         readmeActivityIndicator.setColor()
-        readmeActivityIndicator.radius = 12
         
         licenseLabel.text = NSLocalizedString("repoDetails.licenseLabel.title", comment: "")
         starsLabel.text = NSLocalizedString("repoDetails.starsLabel.title", comment: "")
@@ -120,11 +122,22 @@ class RepositoryDetailInfoViewController: UIViewController {
         watchersLabel.text = NSLocalizedString("repoDetails.watchersLabel.title", comment: "")
     }
     
-    private func loadingStart(content: UIView, errorView: ErrorView, indicator: MDCActivityIndicator) {
+    private func loadingStart(content: UIView, errorView: ErrorView, reloadButton: UIButton, indicator: MDCActivityIndicator) {
         content.isHidden = true
-//        hideErrorView(errorView)
+        hideErrorView(errorView)
+        reloadButton.isHidden = true
         indicator.show()
     }
+    
+    @IBAction func reloadButtonTapped(_ sender: UIButton) {
+        if sender.accessibilityIdentifier == "reloadButton" {
+            getRepoInfo()
+            getReadmeAndUpdateUI()
+            return
+        }
+        getReadmeAndUpdateUI()
+    }
+    
     
     @IBAction private func linkPressed() {
         if let url = URL(string: linkLabel.text!) {
@@ -134,3 +147,4 @@ class RepositoryDetailInfoViewController: UIViewController {
         }
     }
 }
+

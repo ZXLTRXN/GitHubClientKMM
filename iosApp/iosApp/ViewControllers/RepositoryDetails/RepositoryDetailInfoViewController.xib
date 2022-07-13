@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RepositoryDetailInfoViewController" customModule="GitHubClient" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RepositoryDetailInfoViewController" customModule="iosApp" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="FLv-sM-zfu" id="dfU-Zw-5Uf"/>
                 <outlet property="contentStackView" destination="T8x-CP-uF6" id="kao-Ir-XyZ"/>
@@ -23,6 +23,8 @@
                 <outlet property="readmeActivityIndicator" destination="ey4-5i-v1E" id="iai-t9-xfw"/>
                 <outlet property="readmeErrorView" destination="nXX-KP-7gI" id="lKW-JY-Deb"/>
                 <outlet property="readmeLabel" destination="IfS-Ul-Vdi" id="NmI-hR-Dme"/>
+                <outlet property="readmeReloadButton" destination="3my-Hk-fDU" id="ISO-jO-7q2"/>
+                <outlet property="reloadButton" destination="9yW-fH-aKK" id="Shy-Kn-P07"/>
                 <outlet property="starsLabel" destination="A7I-Ij-obo" id="4eC-iw-2SZ"/>
                 <outlet property="starsLabelWithValue" destination="yTF-uD-vSJ" id="RYd-0x-gZy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -39,7 +41,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="T8x-CP-uF6">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="624.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="434.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="WEZ-od-4IX" userLabel="Link Row">
                                     <rect key="frame" x="8" y="0.0" width="82.5" height="48"/>
@@ -164,12 +166,17 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="nmK-hA-YkW"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                            <integer key="value" value="12"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXX-KP-7gI" userLabel="Readme Error View" customClass="ErrorView" customModule="GitHubClient" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="224.5" width="398" height="400"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXX-KP-7gI" userLabel="Readme Error View" customClass="ErrorView" customModule="iosApp" customModuleProvider="target">
+                                    <rect key="frame" x="8" y="224.5" width="398" height="210"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="400" id="ejU-DZ-ykF"/>
+                                        <constraint firstAttribute="height" constant="210" id="ejU-DZ-ykF"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -191,9 +198,12 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="wvK-lo-Ki1"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="fAR-IS-xnH"/>
                 </scrollView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkY-uf-Foy" customClass="ErrorView" customModule="GitHubClient" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkY-uf-Foy" customClass="ErrorView" customModule="iosApp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="373" width="414" height="150"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="6rd-pT-TfZ"/>
+                    </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLv-sM-zfu" customClass="MDCActivityIndicator">
                     <rect key="frame" x="179" y="420" width="56" height="56"/>
@@ -202,19 +212,66 @@
                         <constraint firstAttribute="height" constant="56" id="Mt6-3V-gJI"/>
                         <constraint firstAttribute="width" constant="56" id="aNY-Yn-IsT"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                            <integer key="value" value="28"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3my-Hk-fDU" userLabel="Redme Retry Button">
+                    <rect key="frame" x="16" y="812" width="382" height="32"/>
+                    <color key="backgroundColor" name="GreenButton"/>
+                    <accessibility key="accessibilityConfiguration" identifier="readmeReloadButton"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="reloadButtonTapped:" destination="-1" eventType="touchUpInside" id="bQw-sa-vVt"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yW-fH-aKK" userLabel="Retry Button">
+                    <rect key="frame" x="16" y="812" width="382" height="32"/>
+                    <color key="backgroundColor" name="GreenButton"/>
+                    <accessibility key="accessibilityConfiguration" identifier="reloadButton"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="reloadButtonTapped:" destination="-1" eventType="touchUpInside" id="45t-7H-t4t"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="YUb-QQ-ZSg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="13P-Xh-10u"/>
-                <constraint firstItem="CkY-uf-Foy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2BG-hb-FSR"/>
-                <constraint firstItem="CkY-uf-Foy" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="3UD-7p-4bD"/>
+                <constraint firstItem="9yW-fH-aKK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="2jm-2D-SBW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YUb-QQ-ZSg" secondAttribute="trailing" id="9Di-f4-EGE"/>
                 <constraint firstItem="FLv-sM-zfu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Bhd-4A-gCC"/>
-                <constraint firstItem="CkY-uf-Foy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cxU-LG-rvI"/>
+                <constraint firstItem="3my-Hk-fDU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Clr-mQ-IV3"/>
+                <constraint firstItem="CkY-uf-Foy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="DZX-kz-TYZ"/>
+                <constraint firstItem="CkY-uf-Foy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EZK-dj-Vxo"/>
+                <constraint firstItem="CkY-uf-Foy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Fxt-D3-zSZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3my-Hk-fDU" secondAttribute="bottom" constant="18" id="IGh-mV-c9l"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3my-Hk-fDU" secondAttribute="trailing" constant="16" id="bSh-rI-2ua"/>
                 <constraint firstItem="FLv-sM-zfu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="e4H-H4-mom"/>
-                <constraint firstItem="CkY-uf-Foy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="onW-2f-TR5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9yW-fH-aKK" secondAttribute="trailing" constant="16" id="jHk-UG-REW"/>
+                <constraint firstItem="9yW-fH-aKK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-50" id="qNl-Hc-uMw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9yW-fH-aKK" secondAttribute="bottom" constant="18" id="qPZ-un-efv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YUb-QQ-ZSg" secondAttribute="bottom" id="ugx-6p-BGU"/>
                 <constraint firstItem="YUb-QQ-ZSg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ygX-Jr-8gY"/>
             </constraints>
@@ -223,7 +280,7 @@
     </objects>
     <designables>
         <designable name="FLv-sM-zfu">
-            <size key="intrinsicContentSize" width="26.5" height="26.5"/>
+            <size key="intrinsicContentSize" width="58.5" height="58.5"/>
         </designable>
         <designable name="ey4-5i-v1E">
             <size key="intrinsicContentSize" width="26.5" height="26.5"/>
@@ -241,12 +298,18 @@
         <namedColor name="Forks">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="GreenButton">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Stars">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Watchers">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
