@@ -26,8 +26,6 @@ class RepositoryTableViewCell: UITableViewCell {
         nameLabel.text = repo.name
         languageLabel.text = repo.language
         descriptionLabel.text = repo.description_
-        if let color = UIColor(hex: repo.languageColor) {
-            languageLabel.textColor = color
-        }
+        languageLabel.textColor = ColorManager.shared.getColor(language: repo.language)
     }
 }
