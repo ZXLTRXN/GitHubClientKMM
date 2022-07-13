@@ -5,14 +5,10 @@ import com.example.githubclientkmm.data.KeyValueStorage
 import com.example.githubclientkmm.data.network.APIService
 import com.example.githubclientkmm.data.network.jsonHttpClient
 import com.example.githubclientkmm.data.network.readmeHttpClient
-import com.russhwolf.settings.Settings
-import io.ktor.client.HttpClient
+import com.example.githubclientkmm.data.settings
 
 object DI {
-    private val settings: Settings = Settings()
-    private val jsonClient: HttpClient = jsonHttpClient
-    private val readmeClient: HttpClient = readmeHttpClient
-    private val api: APIService = APIService(jsonClient, readmeClient)
+    private val api: APIService = APIService(jsonHttpClient, readmeHttpClient)
 
     val storage: KeyValueStorage = KeyValueStorage(settings)
     val appRepo: AppRepository = AppRepository(api = api, storage = storage)
