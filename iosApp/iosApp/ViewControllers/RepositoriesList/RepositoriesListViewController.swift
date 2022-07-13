@@ -77,6 +77,7 @@ class RepositoriesListViewController: UIViewController {
     private func loadingStart() {
         hideErrorView(errorView)
         tableView.isHidden = true
+        reloadButton.isHidden = true
         activityIndicator.show()
     }
 }
