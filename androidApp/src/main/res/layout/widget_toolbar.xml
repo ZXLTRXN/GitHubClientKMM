@@ -1,0 +1,11 @@
+<com.google.android.material.appbar.AppBarLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<com.google.android.material.appbar.MaterialToolbar
+    android:id="@+id/topAppBar"
+    app:menu="@menu/toolbar_menu"
+    app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+    style="@style/Widget.Toolbar" />
+</com.google.android.material.appbar.AppBarLayout>
