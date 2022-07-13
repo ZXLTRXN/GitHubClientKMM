@@ -15,6 +15,11 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -26,7 +31,7 @@ android {
 }
 
 val coroutineVersion = "1.6.0"
-val hiltVersion = "2.41"
+val hiltVersion = "2.42"
 val lifecycleVersion = "2.4.1"
 val fragmentVersion = "1.4.1"
 val navigationVersion = "2.4.1"
@@ -60,4 +65,8 @@ dependencies {
 
     // Markdown
     implementation("io.noties.markwon:core:${markwonVersion}")
+}
+
+kapt {
+    correctErrorTypes = true
 }

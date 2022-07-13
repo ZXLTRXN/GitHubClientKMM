@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-//    private val repository: AppRepository
+    private val repository: AppRepository
 ) : ViewModel() {
 
     val token: MutableStateFlow<String> = MutableStateFlow("")
@@ -68,8 +68,9 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun trySignIn() {
-//        viewModelScope.launch {
-//            _state.value = State.Loading
+        viewModelScope.launch {
+            _state.value = State.Loading
+            repository.signIn(token.value)
 //            when (val res = repository.signIn(token.value)) {
 //                is Resource.Success -> {
 //                    _actions.send(Action.RouteToMain)
@@ -80,7 +81,7 @@ class AuthViewModel @Inject constructor(
 //                    _actions.send(Action.ShowError(res.message, res.code))
 //                }
 //            }
-//        }
+        }
     }
 
     sealed interface State {
