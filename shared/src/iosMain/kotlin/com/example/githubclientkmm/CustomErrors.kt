@@ -13,7 +13,7 @@ sealed class CustomError {
     class Forbidden(val code: Int, val body: String) : CustomError()
     class NotFound(val code: Int, val body: String) : CustomError()
     class UnknownRequest(val code: Int, val body: String) : CustomError()
-    class Unknown(val message: String) : CustomError()
+    class Unknown(val message: String, val underlinedError: NSError?) : CustomError()
     object Connection : CustomError()
 }
 
@@ -24,8 +24,8 @@ fun NSError.getKotlinException(): CustomError? {
         is ForbiddenException -> CustomError.Forbidden(code = e.code, body = e.body)
         is NotFoundException -> CustomError.NotFound(code = e.code, body = e.body)
         is UnknownRequestException -> CustomError.UnknownRequest(code = e.code, body = e.body)
-        is UnknownException -> CustomError.Unknown(message = e.cause!!.message!!)
+        is UnknownException -> CustomError.Unknown(message = e.cause!!.message!!, underlinedError = null)
         is ConnectionException -> CustomError.Connection
-        else -> CustomError.Unknown(message = e.message!!)
+        else -> CustomError.Unknown(message = e.message!!, underlinedError = null)
     }
 }

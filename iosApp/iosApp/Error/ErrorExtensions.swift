@@ -15,4 +15,11 @@ extension Error {
         guard let kotlinExc = CustomErrorsKt.getKotlinException(nsError) else { return nil }
         return kotlinExc
     }
+    
+    func asCustomError() -> CustomError {
+        if let kotlinExc = self.asKotlin() {
+            return kotlinExc
+        }
+        return CustomError.Unknown(message: "Unknown Ios error", underlinedError: self)
+    }
 }

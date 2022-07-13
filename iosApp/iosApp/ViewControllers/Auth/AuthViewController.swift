@@ -71,9 +71,7 @@ class AuthViewController: UIViewController {
                      self?.navigationController?.setViewControllers([RepositoriesListViewController()], animated: true)
                     return
                 }
-                
-                guard let kotlinExc = error.asKotlin() else { return }
-                self?.showAlert(for: kotlinExc, sender: sender)
+                self?.showAlert(for: error.asCustomError(), sender: sender)
             }
         }
     }

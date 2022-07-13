@@ -10,7 +10,7 @@ import UIKit
 import shared
 
 extension UIViewController {
-    func showErrorView(_ errorView: ErrorView!,for error: CustomError) {
+    func showErrorView(_ errorView: ErrorView!, for error: CustomError) {
         var image: UIImage
         
         if error is CustomError.Connection {

@@ -59,9 +59,8 @@ class RepositoryDetailInfoViewController: UIViewController {
         appRepo.getRepository(ownerName: repo.owner, repoName: repo.name) { [weak self] repo, error in
             self?.activityIndicator.hide()
             if let error = error {
-                guard let kotlinExc = error.asKotlin() else { return }
                 self?.reloadButton.isHidden = false
-                self?.showErrorView(self?.errorView, for: kotlinExc)
+                self?.showErrorView(self?.errorView, for: error.asCustomError())
                 return
             }
             if let repo = repo {
@@ -77,13 +76,13 @@ class RepositoryDetailInfoViewController: UIViewController {
         appRepo.getRepositoryReadme(ownerName: repo.owner, repoName: repo.name, branchName: repo.branch){ [weak self] (readme, error) in
             self?.readmeActivityIndicator.hide()
             if let error = error {
-                guard let kotlinExc = error.asKotlin() else { return }
-                if kotlinExc is CustomError.NotFound {
+                let customError: CustomError = error.asCustomError()
+                if customError is CustomError.NotFound {
                     self?.readmeLabel.text = NSLocalizedString("errorType.readmeNotFound.description", comment: "")
                     self?.readmeLabel.isHidden = false
                     return
                 }
-                self?.showErrorView(self?.readmeErrorView, for: kotlinExc)
+                self?.showErrorView(self?.readmeErrorView, for: customError)
                 self?.readmeReloadButton.isHidden = false
                 return
             }

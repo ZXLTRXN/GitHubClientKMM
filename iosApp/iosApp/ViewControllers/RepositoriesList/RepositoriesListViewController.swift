@@ -65,8 +65,7 @@ class RepositoriesListViewController: UIViewController {
             }
             
             if let error = error {
-                guard let kotlinExc = error.asKotlin() else { return }
-                self?.showErrorView(self?.errorView, for: kotlinExc)
+                self?.showErrorView(self?.errorView, for: error.asCustomError())
                 self?.reloadButton.isHidden = false
                 self?.reloadButton.setTitle(NSLocalizedString("errorView.reloadButton.retry.title", comment: ""), for: .normal)
                 self?.tableView.isHidden = true
