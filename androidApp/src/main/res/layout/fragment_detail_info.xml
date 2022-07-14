@@ -221,6 +221,7 @@
                 android:id="@+id/tv_readme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/stars_layout" />
 
@@ -238,6 +239,7 @@
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/progress_circular_readme"
                 style="@style/Widget.ProgressIndicator.Small"
+                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_readme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
