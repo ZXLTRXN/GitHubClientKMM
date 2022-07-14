@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.githubclientkmm.android.R
 import com.example.githubclientkmm.android.utils.LocalizeString
+import com.example.githubclientkmm.android.utils.makeDevelopersErrorMessage
 import com.example.githubclientkmm.android.utils.validateToken
 import com.example.githubclientkmm.data.AppRepository
 import com.example.githubclientkmm.data.network.ConnectionException
@@ -79,23 +80,7 @@ class AuthViewModel @Inject constructor(
                 _state.value = State.Idle
             }.onFailure { exception ->
                 _state.value = State.Idle
-                val(msg, code) = when(exception){
-                    is ConnectionException -> {
-                        LocalizeString.Resource(R.string.network_error) to null
-                    }
-                    is UnauthorizedException -> {
-                        LocalizeString.Resource(R.string.wrong_token) to exception.code
-                    }
-                    is UnknownRequestException -> {
-                        LocalizeString.Resource(R.string.unknown_error) to exception.code
-                    }
-                    is UnknownException -> {
-                        LocalizeString.Raw(exception.cause!!.message!!) to null
-                    }
-                    else -> {
-                        LocalizeString.Raw(exception.message!!) to null
-                    }
-                }
+                val(msg: LocalizeString, code: Int?) = makeDevelopersErrorMessage(exception)
                 _actions.send(Action.ShowError(msg, code))
             }
         }

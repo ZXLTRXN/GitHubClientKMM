@@ -39,6 +39,6 @@
     <string name="service_unavailable">Service unavailable</string>
     <string name="no_rights">No rights to view</string>
     <string name="network_error">Check your Internet connection</string>
-    <string name="unknown_error">Unknown error</string>
+    <string name="unknown_error">Unknown service error</string>
     <string name="error_label">Error</string>
 </resources>
