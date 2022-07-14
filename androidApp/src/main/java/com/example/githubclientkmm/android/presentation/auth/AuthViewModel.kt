@@ -7,10 +7,6 @@ import com.example.githubclientkmm.android.utils.LocalizeString
 import com.example.githubclientkmm.android.utils.makeDevelopersErrorMessage
 import com.example.githubclientkmm.android.utils.validateToken
 import com.example.githubclientkmm.data.AppRepository
-import com.example.githubclientkmm.data.network.ConnectionException
-import com.example.githubclientkmm.data.network.UnauthorizedException
-import com.example.githubclientkmm.data.network.UnknownException
-import com.example.githubclientkmm.data.network.UnknownRequestException
 import com.example.githubclientkmm.data.signInResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -38,22 +34,22 @@ class AuthViewModel @Inject constructor(
 
     private var validationIsOn: Boolean = false
 
-    private fun startValidation(){
-        viewModelScope.launch {
-            token.collectLatest {
-                validate()
-            }
-        }
-    }
-
     fun signButtonPressed() {
-        if (!validationIsOn){
+        if (!validationIsOn) {
             startValidation()
             validationIsOn = true
         }
 
         if (state.value !is State.Idle) return
         trySignIn()
+    }
+
+    private fun startValidation() {
+        viewModelScope.launch {
+            token.collectLatest {
+                validate()
+            }
+        }
     }
 
     private fun validate(): ValidationState {
@@ -80,7 +76,7 @@ class AuthViewModel @Inject constructor(
                 _state.value = State.Idle
             }.onFailure { exception ->
                 _state.value = State.Idle
-                val(msg: LocalizeString, code: Int?) = makeDevelopersErrorMessage(exception)
+                val (msg: LocalizeString, code: Int?) = makeDevelopersErrorMessage(exception)
                 _actions.send(Action.ShowError(msg, code))
             }
         }

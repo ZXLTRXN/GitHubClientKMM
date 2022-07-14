@@ -41,7 +41,7 @@ class RepositoriesListViewModel @Inject constructor(
             _state.value = State.Loading
             repository.getRepositoriesResult().onSuccess { repos ->
                 _state.value = if (repos.isEmpty()) State.Empty
-                 else State.Loaded(repos = colorPicker.addLanguageColor(repos))
+                else State.Loaded(repos = colorPicker.addLanguageColor(repos))
             }.onFailure { exception ->
                 val (icon: Int, label: LocalizeString, message: LocalizeString) = makeErrorMessage(
                     exception

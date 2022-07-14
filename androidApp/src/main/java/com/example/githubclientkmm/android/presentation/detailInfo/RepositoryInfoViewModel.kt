@@ -53,7 +53,8 @@ class RepositoryInfoViewModel @Inject constructor(
             _state.value = State.Loading
             val (repoRes: Result<Repo>, readmeRes: Result<String>) = coroutineScope {
                 val repo = async { repository.getRepositoryResult(ownerName, repoName) }
-                val readme = async { repository.getRepositoryReadmeResult(ownerName, repoName, branch) }
+                val readme =
+                    async { repository.getRepositoryReadmeResult(ownerName, repoName, branch) }
                 repo.await() to readme.await()
             }
 

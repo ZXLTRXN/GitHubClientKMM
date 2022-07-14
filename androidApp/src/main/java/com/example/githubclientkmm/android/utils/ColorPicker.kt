@@ -10,15 +10,6 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class ColorPicker @Inject constructor(@ApplicationContext private val context: Context) {
-    private fun readFromAssets(): String? {
-        return try {
-            context.assets.open(COLORS_FILE_NAME).bufferedReader().use { it.readText() }
-        } catch (e: IOException) {
-            Log.e(TAG, "readFromAssets:", e)
-            null
-        }
-    }
-
     fun addLanguageColor(repos: List<Repo>): List<Repo> {
         val colorsString: String = readFromAssets() ?: return repos
         val colors = try {
@@ -32,7 +23,7 @@ class ColorPicker @Inject constructor(@ApplicationContext private val context: C
 
             val color: String = try {
                 colors.getString(lang)
-            } catch(e: JSONException) {
+            } catch (e: JSONException) {
                 Log.e(TAG, "addLanguageColor: can't parse color for lang $lang", e)
                 null
             } ?: return@map repo
@@ -40,6 +31,15 @@ class ColorPicker @Inject constructor(@ApplicationContext private val context: C
             repo.copy(
                 languageColor = color
             )
+        }
+    }
+
+    private fun readFromAssets(): String? {
+        return try {
+            context.assets.open(COLORS_FILE_NAME).bufferedReader().use { it.readText() }
+        } catch (e: IOException) {
+            Log.e(TAG, "readFromAssets:", e)
+            null
         }
     }
 

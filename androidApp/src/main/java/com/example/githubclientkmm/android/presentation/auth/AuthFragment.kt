@@ -69,7 +69,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
 
         collectActions(viewModel.actions) { action ->
             when (action) {
-                is Action.ShowError ->{
+                is Action.ShowError -> {
                     context?.let {
                         showErrorDialog(action.message.getString(it), action.code)
                     }
@@ -79,7 +79,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
         }
     }
 
-    private fun showErrorDialog(message: String, code: Int? = null){
+    private fun showErrorDialog(message: String, code: Int? = null) {
         val args: Bundle = ErrorDialogFragment.createArguments(message, code)
         val dialogFragment = ErrorDialogFragment()
         dialogFragment.arguments = args
@@ -91,7 +91,8 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
             .toRepositoriesListFragment()
         this.findNavController().navigate(action)
     }
-    companion object{
+
+    companion object {
         private const val ERROR_DIALOG_TAG = "ErrorDialogFragment"
     }
 

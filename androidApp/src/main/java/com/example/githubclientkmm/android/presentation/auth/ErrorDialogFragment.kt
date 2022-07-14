@@ -36,7 +36,7 @@ class ErrorDialogFragment() : DialogFragment() {
 
         fun createArguments(message: String, code: Int? = null): Bundle {
             val args = Bundle()
-            code?.let{
+            code?.let {
                 args.putInt(CODE_KEY, it)
             }
             args.putString(MESSAGE_KEY, message)
