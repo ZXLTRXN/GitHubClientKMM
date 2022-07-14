@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.githubclientkmm.android.databinding.RepositoryElementBinding
+import com.example.githubclientkmm.android.databinding.RepositoriesListElementBinding
 import com.example.githubclientkmm.data.models.Repo
 
 
@@ -15,7 +15,7 @@ class RepositoriesAdapter(
 ) : ListAdapter<Repo, RepositoriesAdapter.RepoViewHolder>(RepoDiffUtilCallback()) {
 
     class RepoViewHolder(
-        private val binding: RepositoryElementBinding,
+        private val binding: RepositoriesListElementBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(repo: Repo) {
@@ -51,7 +51,7 @@ class RepositoriesAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
-        val view = RepositoryElementBinding
+        val view = RepositoriesListElementBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return RepoViewHolder(view)
     }

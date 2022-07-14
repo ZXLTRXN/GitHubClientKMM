@@ -227,7 +227,7 @@
 
             <include
                 android:id="@+id/error_readme_layout"
-                layout="@layout/layout_error"
+                layout="@layout/error_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
@@ -249,7 +249,7 @@
 
     <include
         android:id="@+id/error_layout"
-        layout="@layout/layout_error"
+        layout="@layout/error_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"
@@ -260,7 +260,7 @@
 
     <include
         android:id="@+id/loading_layout"
-        layout="@layout/layout_loading"
+        layout="@layout/loading_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"

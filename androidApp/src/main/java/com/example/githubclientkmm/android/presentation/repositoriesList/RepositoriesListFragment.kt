@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.example.githubclientkmm.android.R
-import com.example.githubclientkmm.android.databinding.FragmentRepositoriesListBinding
+import com.example.githubclientkmm.android.databinding.RepositoriesListFragmentBinding
 import com.example.githubclientkmm.android.presentation.repositoriesList.RepositoriesListViewModel.State
 import com.example.githubclientkmm.android.presentation.repositoriesList.recyclerView.RepositoriesAdapter
 import com.example.githubclientkmm.android.utils.collectLatestLifecycleFlow
@@ -21,8 +21,8 @@ import com.example.githubclientkmm.data.models.Repo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
-    private var _binding: FragmentRepositoriesListBinding? = null
+class RepositoriesListFragment : Fragment(R.layout.repositories_list_fragment) {
+    private var _binding: RepositoriesListFragmentBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<RepositoriesListViewModel>()
@@ -33,7 +33,7 @@ class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentRepositoriesListBinding.inflate(inflater, container, false)
+        _binding = RepositoriesListFragmentBinding.inflate(inflater, container, false)
         val view = binding.apply {
             rvRepositoriesList.addItemDecoration(DividerItemDecoration(context, VERTICAL))
         }

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.githubclientkmm.android.R
-import com.example.githubclientkmm.android.databinding.FragmentAuthBinding
+import com.example.githubclientkmm.android.databinding.AuthFragmentBinding
 import com.example.githubclientkmm.android.presentation.auth.AuthViewModel.Action
 import com.example.githubclientkmm.android.presentation.auth.AuthViewModel.State
 import com.example.githubclientkmm.android.utils.bindTextTwoWay
@@ -17,8 +17,8 @@ import com.example.githubclientkmm.android.utils.collectLatestLifecycleFlow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AuthFragment : Fragment(R.layout.fragment_auth) {
-    private var _binding: FragmentAuthBinding? = null
+class AuthFragment : Fragment(R.layout.auth_fragment) {
+    private var _binding: AuthFragmentBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<AuthViewModel>()
@@ -29,7 +29,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentAuthBinding.inflate(inflater, container, false)
+        _binding = AuthFragmentBinding.inflate(inflater, container, false)
         setHasOptionsMenu(false)
         return binding.root
     }

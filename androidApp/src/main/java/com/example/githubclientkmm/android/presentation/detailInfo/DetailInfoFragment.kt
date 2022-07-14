@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.githubclientkmm.android.R
-import com.example.githubclientkmm.android.databinding.FragmentDetailInfoBinding
+import com.example.githubclientkmm.android.databinding.DetailInfoFragmentBinding
 import com.example.githubclientkmm.android.presentation.detailInfo.RepositoryInfoViewModel.ReadmeState
 import com.example.githubclientkmm.android.presentation.detailInfo.RepositoryInfoViewModel.State
 import com.example.githubclientkmm.android.utils.collectLatestLifecycleFlow
@@ -23,8 +23,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.noties.markwon.Markwon
 
 @AndroidEntryPoint
-class DetailInfoFragment : Fragment(R.layout.fragment_detail_info) {
-    private var _binding: FragmentDetailInfoBinding? = null
+class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
+    private var _binding: DetailInfoFragmentBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<RepositoryInfoViewModel>()
@@ -37,7 +37,7 @@ class DetailInfoFragment : Fragment(R.layout.fragment_detail_info) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentDetailInfoBinding.inflate(inflater, container, false)
+        _binding = DetailInfoFragmentBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
     }
