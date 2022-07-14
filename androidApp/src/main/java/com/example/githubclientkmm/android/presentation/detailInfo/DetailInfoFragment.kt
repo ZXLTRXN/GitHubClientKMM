@@ -48,7 +48,7 @@ class DetailInfoFragment : Fragment(R.layout.fragment_detail_info) {
             toolbar = binding.topAppBarLayout.topAppBar,
             title = args.repoName
         ) {
-            viewModel.signOut()
+            viewModel.signOutPressed()
         }
         observe()
     }
@@ -135,8 +135,8 @@ class DetailInfoFragment : Fragment(R.layout.fragment_detail_info) {
         collectLatestLifecycleFlow(viewModel.state) { state ->
             setUpViews(state)
         }
-        binding.errorLayout.retryButton.setOnClickListener { viewModel.retry() }
-        binding.errorReadmeLayout.retryButton.setOnClickListener { viewModel.retry() }
+        binding.errorLayout.retryButton.setOnClickListener { viewModel.reloadPressed() }
+        binding.errorReadmeLayout.retryButton.setOnClickListener { viewModel.reloadPressed() }
     }
 
     private fun openUrl(url: String) {

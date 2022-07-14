@@ -51,7 +51,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth) {
             progressCircular.visibility =
                 if (state is State.Loading) View.VISIBLE else View.GONE
             submitButton.isEnabled = state !is State.Loading
-            submitButton.setOnClickListener { viewModel.onSignButtonPressed() }
+            submitButton.setOnClickListener { viewModel.signButtonPressed() }
             submitButton.text =
                 if (state is State.Loading) "" else getString(R.string.btn_sign_in)
         }

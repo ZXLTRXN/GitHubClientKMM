@@ -43,7 +43,7 @@ class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolbar(toolbar = binding.topAppBarLayout.topAppBar) {
-            viewModel.signOut()
+            viewModel.signOutPressed()
         }
         val adapter = setUpAdapter()
         observe(adapter)
@@ -100,8 +100,8 @@ class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
         collectLatestLifecycleFlow(viewModel.state) { state ->
             setUpViews(state, adapter)
         }
-        binding.errorLayout.retryButton.setOnClickListener { viewModel.retry() }
-        binding.emptyLayout.refreshButton.setOnClickListener { viewModel.retry() }
+        binding.errorLayout.retryButton.setOnClickListener { viewModel.reloadPressed() }
+        binding.emptyLayout.refreshButton.setOnClickListener { viewModel.reloadPressed() }
     }
 
     private fun navigateToDetailInfo(ownerName: String, repoName: String, branch: String) {

@@ -38,11 +38,11 @@ class RepositoryInfoViewModel @Inject constructor(
         tryGetInfo()
     }
 
-    fun signOut() {
+    fun signOutPressed() {
         storage.authToken = null
     }
 
-    fun retry() = tryGetInfo()
+    fun reloadPressed() = tryGetInfo()
 
     private fun tryGetInfo() {
         getInfo(ownerName, repoName, branch)

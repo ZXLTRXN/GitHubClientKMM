@@ -30,11 +30,11 @@ class RepositoriesListViewModel @Inject constructor(
         getRepos()
     }
 
-    fun signOut() {
+    fun signOutPressed() {
         storage.authToken = null
     }
 
-    fun retry() = getRepos()
+    fun reloadPressed() = getRepos()
 
     private fun getRepos() {
         viewModelScope.launch {

@@ -46,7 +46,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun onSignButtonPressed() {
+    fun signButtonPressed() {
         if (!validationIsOn){
             startValidation()
             validationIsOn = true
