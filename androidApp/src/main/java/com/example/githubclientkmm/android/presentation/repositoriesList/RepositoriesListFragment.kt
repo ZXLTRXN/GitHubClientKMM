@@ -92,7 +92,7 @@ class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
             emptyLayout.root.visibility =
                 if (state is State.Empty) View.VISIBLE else View.GONE
             emptyLayout.tvInfoEmpty.text =
-                if (state is State.Error) getString(R.string.empty_repositories_list) else null
+                if (state is State.Empty) getString(R.string.empty_repositories_list) else null
         }
     }
 
@@ -101,6 +101,7 @@ class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
             setUpViews(state, adapter)
         }
         binding.errorLayout.retryButton.setOnClickListener { viewModel.retry() }
+        binding.emptyLayout.refreshButton.setOnClickListener { viewModel.retry() }
     }
 
     private fun navigateToDetailInfo(ownerName: String, repoName: String, branch: String) {

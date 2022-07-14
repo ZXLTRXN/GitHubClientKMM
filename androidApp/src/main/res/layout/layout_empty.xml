@@ -20,6 +20,7 @@
         android:id="@+id/tv_label_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/empty_error_label"
         android:textAppearance="@style/TextAppearance.App.Text.Label"
         android:textColor="@color/blue"
