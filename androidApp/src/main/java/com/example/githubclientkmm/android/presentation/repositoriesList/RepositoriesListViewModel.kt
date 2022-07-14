@@ -2,6 +2,7 @@ package com.example.githubclientkmm.android.presentation.repositoriesList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.githubclientkmm.android.utils.ColorPicker
 import com.example.githubclientkmm.android.utils.LocalizeString
 import com.example.githubclientkmm.android.utils.makeErrorMessage
 import com.example.githubclientkmm.data.AppRepository
@@ -18,7 +19,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class RepositoriesListViewModel @Inject constructor(
     private val repository: AppRepository,
-    private val storage: KeyValueStorage
+    private val storage: KeyValueStorage,
+    private val colorPicker: ColorPicker
 ) : ViewModel() {
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
@@ -39,7 +41,7 @@ class RepositoriesListViewModel @Inject constructor(
             _state.value = State.Loading
             repository.getRepositoriesResult().onSuccess { repos ->
                 _state.value = if (repos.isEmpty()) State.Empty
-                 else State.Loaded(repos = repos)
+                 else State.Loaded(repos = colorPicker.addLanguageColor(repos))
             }.onFailure { exception ->
                 val (icon: Int, label: LocalizeString, message: LocalizeString) = makeErrorMessage(
                     exception
