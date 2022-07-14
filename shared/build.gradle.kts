@@ -13,10 +13,6 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-
-    val multiplatformSettingsVersion = "0.9"
-    val napierVersion = "2.6.1"
-
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
