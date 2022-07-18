@@ -100,9 +100,9 @@ class RepositoryDetailInfoViewController: UIViewController {
         title = repo.name
         linkLabel.text = repo.htmlUrl
         licenseLabelWithValue.text = repo.license ?? NSLocalizedString("repoDetails.licenseLabelWithValue.noLicense.title", comment: "")
-        starsLabelWithValue.text = "\(repo.stars)"
-        forksLabelWithValue.text = "\(repo.forks)"
-        watchersLabelWithValue.text = "\(repo.watchers)"
+        starsLabelWithValue.text = String(repo.stars)
+        forksLabelWithValue.text = String(repo.forks)
+        watchersLabelWithValue.text = String(repo.watchers)
     }
     
     private func setUI(){

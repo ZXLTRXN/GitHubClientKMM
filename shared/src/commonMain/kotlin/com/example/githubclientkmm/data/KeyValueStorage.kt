@@ -10,7 +10,7 @@ class KeyValueStorage(private val settings: Settings) {
             settings[TOKEN_KEY] = value
         }
 
-    companion object {
-        private const val TOKEN_KEY = "token"
+    private companion object {
+        const val TOKEN_KEY = "token"
     }
 }

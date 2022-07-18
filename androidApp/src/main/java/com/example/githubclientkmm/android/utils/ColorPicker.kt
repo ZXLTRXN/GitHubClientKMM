@@ -43,8 +43,8 @@ class ColorPicker @Inject constructor(@ApplicationContext private val context: C
         }
     }
 
-    companion object {
-        private const val COLORS_FILE_NAME = "github_colors.json"
-        private val TAG = ColorPicker::class.java.simpleName
+    private companion object {
+        const val COLORS_FILE_NAME = "github_colors.json"
+        val TAG = ColorPicker::class.java.simpleName
     }
 }

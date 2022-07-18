@@ -92,8 +92,8 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
         this.findNavController().navigate(action)
     }
 
-    companion object {
-        private const val ERROR_DIALOG_TAG = "ErrorDialogFragment"
+    private companion object {
+        const val ERROR_DIALOG_TAG = "ErrorDialogFragment"
     }
 
 }
