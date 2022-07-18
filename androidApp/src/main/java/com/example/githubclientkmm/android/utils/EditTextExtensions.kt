@@ -22,8 +22,8 @@ fun EditText.bindTextTwoWay(stateFlow: MutableStateFlow<String>, lifecycleOwner:
 
     lifecycleOwner.lifecycleScope.launch {
         stateFlow.collectLatest { text ->
-            if (this@bindTextTwoWay.text.toString() != text)
-                this@bindTextTwoWay.setText(text)
+            if (this@bindTextTwoWay.text.toString() == text) return@collectLatest
+            this@bindTextTwoWay.setText(text)
         }
     }
 }
