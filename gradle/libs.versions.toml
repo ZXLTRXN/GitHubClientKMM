@@ -15,6 +15,9 @@ fragmentVersion = "1.4.1"
 navigationVersion = "2.4.1"
 splashVersion = "1.0.0-beta02"
 markwonVersion = "4.6.2"
+appcompatVersion = "1.4.2"
+materialVersion = "1.6.1"
+constraintlayoutVersion = "2.1.4"
 
 # coroutines
 coroutinesNativeVersion = "1.6.0-native-mt"
@@ -55,6 +58,9 @@ lifecycleViewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", ve
 splash = { module = "androidx.core:core-splashscreen", version.ref = "splashVersion" }
 fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentVersion" }
 markwon = { module = "io.noties.markwon:core", version.ref = "markwonVersion" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
+material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
 
 # plugin artifacts
 kotlinPlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }

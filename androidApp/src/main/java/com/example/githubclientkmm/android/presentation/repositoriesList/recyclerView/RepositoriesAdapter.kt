@@ -25,25 +25,25 @@ class RepositoriesAdapter(
         }
 
         private fun bindName(text: String?) {
-            binding.rvElementRepoName.text = text
+            binding.repoName.text = text
         }
 
         private fun bindLanguage(text: String?, color: String?) {
-            val defaultColorId: Int = binding.rvElementRepoName.currentTextColor
+            val defaultColorId: Int = binding.repoName.currentTextColor
             val resultColorId: Int = try {
                 if (color == null) defaultColorId
                 else Color.parseColor(color)
             } catch (e: IllegalArgumentException) {
                 defaultColorId
             }
-            binding.rvElementRepoLanguage.run {
+            binding.repoLanguage.run {
                 this.text = text
                 setTextColor(resultColorId)
             }
         }
 
         private fun bindDescription(text: String?) {
-            binding.rvElementRepoDescription.run {
+            binding.repoDescription.run {
                 visibility = if (text == null) View.GONE else View.VISIBLE
                 this.text = text
             }
