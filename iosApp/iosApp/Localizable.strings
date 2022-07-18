@@ -36,6 +36,7 @@
 "errorType.unknownError.suggestion" = "Check your something";
 "errorType.unknownError.failureReasonWithCode" = "error data: %@ / error code: %d\ninformation for developers";
 "errorType.unknownError.failureReason" = "error data: %@\ninformation for developers";
+"errorType.unknownIosError.title" = "Unknown Ios error";
 
 "errorView.reloadButton.refresh.title" = "Refresh";
 "errorView.reloadButton.retry.title" = "Retry";

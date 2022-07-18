@@ -20,6 +20,6 @@ extension Error {
         if let kotlinExc = self.asKotlin() {
             return kotlinExc
         }
-        return CustomError.Unknown(message: "Unknown Ios error", underlinedError: self)
+        return CustomError.Unknown(message: NSLocalizedString("errorType.unknownIosError.title", comment: ""), underlinedError: self)
     }
 }
