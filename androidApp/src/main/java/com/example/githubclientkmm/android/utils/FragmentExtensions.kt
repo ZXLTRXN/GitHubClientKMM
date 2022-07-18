@@ -11,7 +11,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.githubclientkmm.android.R
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -19,14 +18,6 @@ fun <T> Fragment.collectLatestLifecycleFlow(flow: Flow<T>, collect: suspend (T) 
     viewLifecycleOwner.lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             flow.collectLatest(collect)
-        }
-    }
-}
-
-fun <T> Fragment.collectLifecycleFlow(flow: Flow<T>, collect: FlowCollector<T>) {
-    viewLifecycleOwner.lifecycleScope.launch {
-        repeatOnLifecycle(Lifecycle.State.STARTED) {
-            flow.collect(collect)
         }
     }
 }
@@ -53,9 +44,6 @@ fun Fragment.setUpToolbar(toolbar: Toolbar, title: String? = null, signOut:() ->
     }
 }
 
-
 fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    context?.let {
-        Toast.makeText(context, message, duration).show()
-    }
+    Toast.makeText(requireContext(), message, duration).show()
 }
