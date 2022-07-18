@@ -13,19 +13,19 @@
 		C2B0F4C028791EAA006D0845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4BF28791EAA006D0845 /* SceneDelegate.swift */; };
 		C2B0F4C728791EAB006D0845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4C628791EAB006D0845 /* Assets.xcassets */; };
 		C2B0F4CA28791EAB006D0845 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4C828791EAB006D0845 /* LaunchScreen.storyboard */; };
-		C2B0F4D6287BDEDE006D0845 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */; };
+		C2B0F4D6287BDEDE006D0845 /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4D5287BDEDE006D0845 /* Error+Extensions.swift */; };
 		C2B0F4E8287C1A4A006D0845 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4E6287C1A4A006D0845 /* AuthViewController.swift */; };
 		C2B0F4E9287C1A4A006D0845 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4E7287C1A4A006D0845 /* AuthViewController.xib */; };
-		C2B0F4F2287C1B05006D0845 /* MDCActivityIndicatorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4EB287C1B05006D0845 /* MDCActivityIndicatorExtensions.swift */; };
+		C2B0F4F2287C1B05006D0845 /* MDCActivityIndicator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4EB287C1B05006D0845 /* MDCActivityIndicator+Extensions.swift */; };
 		C2B0F4F3287C1B05006D0845 /* KeyboardAwareAnimatedConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4EC287C1B05006D0845 /* KeyboardAwareAnimatedConstraint.swift */; };
-		C2B0F4F4287C1B05006D0845 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4ED287C1B05006D0845 /* UIControlExtensions.swift */; };
-		C2B0F4F5287C1B05006D0845 /* TextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4EE287C1B05006D0845 /* TextFieldExtensions.swift */; };
+		C2B0F4F4287C1B05006D0845 /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4ED287C1B05006D0845 /* UIControl+Extensions.swift */; };
+		C2B0F4F5287C1B05006D0845 /* TextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4EE287C1B05006D0845 /* TextField+Extensions.swift */; };
 		C2B0F4F6287C1B05006D0845 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4EF287C1B05006D0845 /* TextFieldWithPadding.swift */; };
-		C2B0F4F7287C1B05006D0845 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4F0287C1B05006D0845 /* UIColorExtensions.swift */; };
-		C2B0F4F8287C1B05006D0845 /* UIViewCotrollerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4F1287C1B05006D0845 /* UIViewCotrollerExtensions.swift */; };
+		C2B0F4F7287C1B05006D0845 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4F0287C1B05006D0845 /* UIColor+Extensions.swift */; };
+		C2B0F4F8287C1B05006D0845 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4F1287C1B05006D0845 /* UIViewController+Extensions.swift */; };
 		C2B0F4FD287C1B6C006D0845 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4FA287C1B6C006D0845 /* ErrorView.swift */; };
 		C2B0F4FE287C1B6C006D0845 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */; };
-		C2B0F4FF287C1B6C006D0845 /* CustomErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4FC287C1B6C006D0845 /* CustomErrorExtensions.swift */; };
+		C2B0F4FF287C1B6C006D0845 /* CustomError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0F4FC287C1B6C006D0845 /* CustomError+Extensions.swift */; };
 		C2B0F502287C2AA3006D0845 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2B0F501287C2AA3006D0845 /* Localizable.strings */; };
 		C2DE6F6F287D2BFE00BADC76 /* RepositoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE6F6B287D2BFE00BADC76 /* RepositoriesListViewController.swift */; };
 		C2DE6F70287D2BFE00BADC76 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE6F6C287D2BFE00BADC76 /* RepositoryTableViewCell.swift */; };
@@ -45,19 +45,19 @@
 		C2B0F4C628791EAB006D0845 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2B0F4C928791EAB006D0845 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2B0F4CB28791EAB006D0845 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
+		C2B0F4D5287BDEDE006D0845 /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 		C2B0F4E6287C1A4A006D0845 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		C2B0F4E7287C1A4A006D0845 /* AuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
-		C2B0F4EB287C1B05006D0845 /* MDCActivityIndicatorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDCActivityIndicatorExtensions.swift; sourceTree = "<group>"; };
+		C2B0F4EB287C1B05006D0845 /* MDCActivityIndicator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MDCActivityIndicator+Extensions.swift"; sourceTree = "<group>"; };
 		C2B0F4EC287C1B05006D0845 /* KeyboardAwareAnimatedConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareAnimatedConstraint.swift; sourceTree = "<group>"; };
-		C2B0F4ED287C1B05006D0845 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
-		C2B0F4EE287C1B05006D0845 /* TextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtensions.swift; sourceTree = "<group>"; };
+		C2B0F4ED287C1B05006D0845 /* UIControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
+		C2B0F4EE287C1B05006D0845 /* TextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+Extensions.swift"; sourceTree = "<group>"; };
 		C2B0F4EF287C1B05006D0845 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
-		C2B0F4F0287C1B05006D0845 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		C2B0F4F1287C1B05006D0845 /* UIViewCotrollerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewCotrollerExtensions.swift; sourceTree = "<group>"; };
+		C2B0F4F0287C1B05006D0845 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		C2B0F4F1287C1B05006D0845 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C2B0F4FA287C1B6C006D0845 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
-		C2B0F4FC287C1B6C006D0845 /* CustomErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomErrorExtensions.swift; sourceTree = "<group>"; };
+		C2B0F4FC287C1B6C006D0845 /* CustomError+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomError+Extensions.swift"; sourceTree = "<group>"; };
 		C2B0F501287C2AA3006D0845 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C2DE6F6B287D2BFE00BADC76 /* RepositoriesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewController.swift; sourceTree = "<group>"; };
 		C2DE6F6C287D2BFE00BADC76 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,12 +136,12 @@
 			children = (
 				C2691549287E814700533144 /* ColorManager.swift */,
 				C2B0F4EC287C1B05006D0845 /* KeyboardAwareAnimatedConstraint.swift */,
-				C2B0F4EB287C1B05006D0845 /* MDCActivityIndicatorExtensions.swift */,
-				C2B0F4EE287C1B05006D0845 /* TextFieldExtensions.swift */,
+				C2B0F4EB287C1B05006D0845 /* MDCActivityIndicator+Extensions.swift */,
+				C2B0F4EE287C1B05006D0845 /* TextField+Extensions.swift */,
 				C2B0F4EF287C1B05006D0845 /* TextFieldWithPadding.swift */,
-				C2B0F4F0287C1B05006D0845 /* UIColorExtensions.swift */,
-				C2B0F4ED287C1B05006D0845 /* UIControlExtensions.swift */,
-				C2B0F4F1287C1B05006D0845 /* UIViewCotrollerExtensions.swift */,
+				C2B0F4F0287C1B05006D0845 /* UIColor+Extensions.swift */,
+				C2B0F4ED287C1B05006D0845 /* UIControl+Extensions.swift */,
+				C2B0F4F1287C1B05006D0845 /* UIViewController+Extensions.swift */,
 			);
 			path = UIUtils;
 			sourceTree = "<group>";
@@ -151,8 +151,8 @@
 			children = (
 				C2B0F4FA287C1B6C006D0845 /* ErrorView.swift */,
 				C2B0F4FB287C1B6C006D0845 /* ErrorView.xib */,
-				C2B0F4FC287C1B6C006D0845 /* CustomErrorExtensions.swift */,
-				C2B0F4D5287BDEDE006D0845 /* ErrorExtensions.swift */,
+				C2B0F4FC287C1B6C006D0845 /* CustomError+Extensions.swift */,
+				C2B0F4D5287BDEDE006D0845 /* Error+Extensions.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -316,21 +316,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B0F4FF287C1B6C006D0845 /* CustomErrorExtensions.swift in Sources */,
+				C2B0F4FF287C1B6C006D0845 /* CustomError+Extensions.swift in Sources */,
 				C2DE6F76287D2CB700BADC76 /* RepositoryDetailInfoViewController.swift in Sources */,
-				C2B0F4F8287C1B05006D0845 /* UIViewCotrollerExtensions.swift in Sources */,
+				C2B0F4F8287C1B05006D0845 /* UIViewController+Extensions.swift in Sources */,
 				C2B0F4BE28791EAA006D0845 /* AppDelegate.swift in Sources */,
 				C2DE6F70287D2BFE00BADC76 /* RepositoryTableViewCell.swift in Sources */,
 				C2B0F4F3287C1B05006D0845 /* KeyboardAwareAnimatedConstraint.swift in Sources */,
 				C2DE6F6F287D2BFE00BADC76 /* RepositoriesListViewController.swift in Sources */,
-				C2B0F4F4287C1B05006D0845 /* UIControlExtensions.swift in Sources */,
+				C2B0F4F4287C1B05006D0845 /* UIControl+Extensions.swift in Sources */,
 				C269154A287E814700533144 /* ColorManager.swift in Sources */,
 				C2B0F4E8287C1A4A006D0845 /* AuthViewController.swift in Sources */,
-				C2B0F4F2287C1B05006D0845 /* MDCActivityIndicatorExtensions.swift in Sources */,
-				C2B0F4F7287C1B05006D0845 /* UIColorExtensions.swift in Sources */,
-				C2B0F4D6287BDEDE006D0845 /* ErrorExtensions.swift in Sources */,
+				C2B0F4F2287C1B05006D0845 /* MDCActivityIndicator+Extensions.swift in Sources */,
+				C2B0F4F7287C1B05006D0845 /* UIColor+Extensions.swift in Sources */,
+				C2B0F4D6287BDEDE006D0845 /* Error+Extensions.swift in Sources */,
 				C2B0F4F6287C1B05006D0845 /* TextFieldWithPadding.swift in Sources */,
-				C2B0F4F5287C1B05006D0845 /* TextFieldExtensions.swift in Sources */,
+				C2B0F4F5287C1B05006D0845 /* TextField+Extensions.swift in Sources */,
 				C2B0F4FD287C1B6C006D0845 /* ErrorView.swift in Sources */,
 				C2B0F4C028791EAA006D0845 /* SceneDelegate.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MDCActivityIndicatorExtensions.swift
 //  GitHubClient
 //
 //  Created by Ilya Shevtsov on 28.06.2022.

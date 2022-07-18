@@ -1,5 +1,5 @@
 //
-//  Errors.swift
+//  CustomErrorExtension.swift
 //  GitHubClient
 //
 //  Created by Ilya Shevtsov on 24.06.2022.
