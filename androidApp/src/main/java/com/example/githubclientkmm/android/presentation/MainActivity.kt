@@ -18,23 +18,20 @@ class MainActivity : AppCompatActivity(R.layout.main_activity) {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        val navController = getNavigationController()
-        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         if (savedInstanceState == null) {
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            val navController = navHostFragment.navController
+            val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+
             val destinationId = if (storage.authToken != null) {
                 R.id.repositoriesListFragment
             } else {
                 R.id.authFragment
             }
             navGraph.setStartDestination(destinationId)
+            navController.graph = navGraph
         }
-        navController.graph = navGraph
-    }
-
-    private fun getNavigationController(): NavController {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        return navHostFragment.navController
     }
 }
