@@ -70,9 +70,7 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
         collectActions(viewModel.actions) { action ->
             when (action) {
                 is Action.ShowError -> {
-                    context?.let {
-                        showErrorDialog(action.message.getString(it), action.code)
-                    }
+                    showErrorDialog(action.message.getString(requireContext()), action.code)
                 }
                 is Action.RouteToMain -> this.findNavController().navigate(
                     AuthFragmentDirections
