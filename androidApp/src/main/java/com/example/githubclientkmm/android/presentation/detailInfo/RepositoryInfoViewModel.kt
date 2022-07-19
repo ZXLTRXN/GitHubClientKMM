@@ -28,27 +28,27 @@ class RepositoryInfoViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
-    val state: StateFlow<State> = _state.asStateFlow()
+    val state: StateFlow<State> = _state
 
     private val ownerName: String = requireNotNull(savedStateHandle.get<String>("ownerName"))
     private val repoName: String = requireNotNull(savedStateHandle.get<String>("repoName"))
     private val branch: String = requireNotNull(savedStateHandle.get<String>("branch"))
 
     init {
-        tryGetInfo()
+        getInfo()
     }
 
     fun signOutPressed() {
         storage.authToken = null
     }
 
-    fun reloadPressed() = tryGetInfo()
+    fun reloadPressed() = getInfo()
 
-    private fun tryGetInfo() {
-        getInfo(ownerName, repoName, branch)
-    }
-
-    private fun getInfo(ownerName: String, repoName: String, branch: String) {
+    private fun getInfo(
+        ownerName: String = this.ownerName,
+        repoName: String = this.repoName,
+        branch: String = this.branch
+    ) {
         viewModelScope.launch {
             _state.value = State.Loading
             val (repoRes: Result<Repo>, readmeRes: Result<String>) = coroutineScope {

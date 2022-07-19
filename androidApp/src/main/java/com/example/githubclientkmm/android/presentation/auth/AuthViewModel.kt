@@ -27,7 +27,7 @@ class AuthViewModel @Inject constructor(
     val token: MutableStateFlow<String> = MutableStateFlow("")
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Idle)
-    val state: StateFlow<State> = _state.asStateFlow()
+    val state: StateFlow<State> = _state
 
     private val _actions: Channel<Action> = Channel(Channel.BUFFERED)
     val actions: Flow<Action> = _actions.receiveAsFlow()
