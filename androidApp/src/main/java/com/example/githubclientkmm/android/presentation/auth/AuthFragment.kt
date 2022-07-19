@@ -74,22 +74,18 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
                         showErrorDialog(action.message.getString(it), action.code)
                     }
                 }
-                is Action.RouteToMain -> navigateToRepositoriesList()
+                is Action.RouteToMain -> this.findNavController().navigate(
+                    AuthFragmentDirections
+                        .toRepositoriesListFragment()
+                )
             }
         }
     }
 
     private fun showErrorDialog(message: String, code: Int? = null) {
-        val args: Bundle = ErrorDialogFragment.createArguments(message, code)
         val dialogFragment = ErrorDialogFragment()
-        dialogFragment.arguments = args
+        dialogFragment.arguments = ErrorDialogFragment.createArguments(message, code)
         dialogFragment.show(childFragmentManager, ERROR_DIALOG_TAG)
-    }
-
-    private fun navigateToRepositoriesList() {
-        val action = AuthFragmentDirections
-            .toRepositoriesListFragment()
-        this.findNavController().navigate(action)
     }
 
     private companion object {
