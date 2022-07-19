@@ -73,9 +73,9 @@ class AuthViewModel @Inject constructor(
             repository.signInResult(token.value).onSuccess {
                 _actions.send(Action.RouteToMain)
                 _state.value = State.Idle
-            }.onFailure { exception ->
+            }.onFailure { throwable ->
                 _state.value = State.Idle
-                val (msg: LocalizeString, code: Int?) = makeDevelopersErrorMessage(exception)
+                val (msg: LocalizeString, code: Int?) = makeDevelopersErrorMessage(throwable as Exception)
                 _actions.send(Action.ShowError(msg, code))
             }
         }

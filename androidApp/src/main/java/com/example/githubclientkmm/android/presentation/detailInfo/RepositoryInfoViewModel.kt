@@ -64,8 +64,8 @@ class RepositoryInfoViewModel @Inject constructor(
                         if (readmeState is ReadmeState.Loading)
                             _state.value = State.Loaded(repo, defineReadmeState(readme.await()))
 
-                    }.onFailure { exception ->
-                        val (icon, label, message) = makeErrorMessage(exception)
+                    }.onFailure { throwable ->
+                        val (icon, label, message) = makeErrorMessage(throwable as Exception)
                         _state.value = State.Error(icon, label, message)
                     }
             }
@@ -76,9 +76,9 @@ class RepositoryInfoViewModel @Inject constructor(
         readmeRes.onSuccess { readme ->
             return if (readme.isEmpty()) ReadmeState.Empty
             else ReadmeState.Loaded(readme)
-        }.onFailure { exception ->
-            if (exception is NotFoundException) return ReadmeState.Empty
-            val (icon, label, message) = makeErrorMessage(exception)
+        }.onFailure { throwable ->
+            if (throwable is NotFoundException) return ReadmeState.Empty
+            val (icon, label, message) = makeErrorMessage(throwable as Exception)
             return ReadmeState.Error(icon, label, message)
         }
         throw Error("unattainable code reached in RepositoryInfoViewModel.defineReadmeState()")

@@ -10,46 +10,42 @@ import com.example.githubclientkmm.data.network.UnknownException
 import com.example.githubclientkmm.data.network.UnknownRequestException
 
 
-fun makeDevelopersErrorMessage(exception: Throwable): Pair<LocalizeString, Int?> {
-    return when (exception) {
-        is ConnectionException -> {
-            LocalizeString.Resource(R.string.network_error) to RequestCode.NO_CONNECTION.code
-        }
-        is UnauthorizedException -> {
-            LocalizeString.Resource(R.string.wrong_token) to RequestCode.UNAUTHORIZED.code
-        }
-        is UnknownRequestException -> {
-            LocalizeString.Resource(R.string.unknown_error) to exception.code
-        }
-        is UnknownException -> {
-            LocalizeString.Raw(exception.cause!!.message!!) to null
-        }
-        else -> {
-            LocalizeString.Raw(exception.message!!) to null
-        }
+fun makeDevelopersErrorMessage(exception: Exception): Pair<LocalizeString, Int?> {
+    return try {
+        throw exception
+    } catch (e: ConnectionException) {
+        LocalizeString.Resource(R.string.network_error) to RequestCode.NO_CONNECTION.code
+    } catch (e: UnauthorizedException) {
+        LocalizeString.Resource(R.string.wrong_token) to RequestCode.UNAUTHORIZED.code
+    } catch (e: UnknownRequestException) {
+        LocalizeString.Resource(R.string.unknown_error) to e.code
+    } catch (e: UnknownException) {
+        LocalizeString.Raw(exception.cause!!.message!!) to null
+    } catch (e: Exception) {
+        LocalizeString.Raw(exception.message!!) to null
     }
 }
 
-
-fun makeErrorMessage(exception: Throwable): Triple<Int, LocalizeString, LocalizeString> {
-    return when (exception) {
-        is ConnectionException ->
-            Triple(
-                R.drawable.ic_network_error,
-                LocalizeString.Resource(R.string.network_error_label),
-                LocalizeString.Resource(R.string.network_error)
-            )
-        is ForbiddenException ->
-            Triple(
-                R.drawable.ic_something_error,
-                LocalizeString.Resource(R.string.something_error_label),
-                LocalizeString.Resource(R.string.no_rights)
-            )
-        else ->
-            Triple(
-                R.drawable.ic_something_error,
-                LocalizeString.Resource(R.string.something_error_label),
-                LocalizeString.Resource(R.string.something_error)
-            )
+fun makeErrorMessage(exception: Exception): Triple<Int, LocalizeString, LocalizeString> {
+    return try {
+        throw  exception
+    } catch (e: ConnectionException) {
+        Triple(
+            R.drawable.ic_network_error,
+            LocalizeString.Resource(R.string.network_error_label),
+            LocalizeString.Resource(R.string.network_error)
+        )
+    } catch (e: ForbiddenException) {
+        Triple(
+            R.drawable.ic_something_error,
+            LocalizeString.Resource(R.string.something_error_label),
+            LocalizeString.Resource(R.string.no_rights)
+        )
+    } catch (e: Exception) {
+        Triple(
+            R.drawable.ic_something_error,
+            LocalizeString.Resource(R.string.something_error_label),
+            LocalizeString.Resource(R.string.something_error)
+        )
     }
 }
