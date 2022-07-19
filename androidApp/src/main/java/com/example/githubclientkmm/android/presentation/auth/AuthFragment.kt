@@ -51,7 +51,6 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
             progressCircular.visibility =
                 if (state is State.Loading) View.VISIBLE else View.GONE
             submitButton.isEnabled = state !is State.Loading
-            submitButton.setOnClickListener { viewModel.signButtonPressed() }
             submitButton.text =
                 if (state is State.Loading) "" else getString(R.string.btn_sign_in)
         }
@@ -61,6 +60,7 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
         collectLatestLifecycleFlow(viewModel.state) { state ->
             setUpViews(state)
         }
+        binding.submitButton.setOnClickListener { viewModel.signButtonPressed() }
 
         binding.inputEditText.bindTextTwoWay(
             stateFlow = viewModel.token,
