@@ -28,7 +28,7 @@ class ErrorDialogFragment() : DialogFragment() {
     private fun defineMessage(message: String, code: Int?): String {
         val codesForUser = listOf(RequestCode.NO_CONNECTION.code, RequestCode.UNAUTHORIZED.code)
         return if (code == null || code in codesForUser) message
-        else "$message / $code"
+        else resources.getString(R.string.info_for_developers, message, code)
     }
 
     companion object {

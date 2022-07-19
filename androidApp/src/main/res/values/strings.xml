@@ -40,5 +40,6 @@
     <string name="no_rights">No rights to view</string>
     <string name="network_error">Check your Internet connection</string>
     <string name="unknown_error">Unknown service error</string>
+    <string name="info_for_developers">%1$s / %2$d\ninformation for developers</string>
     <string name="error_label">Error</string>
 </resources>
