@@ -70,8 +70,7 @@ class RepositoriesListFragment : Fragment(R.layout.repositories_list_fragment) {
             loadingLayout.root.visibility =
                 if (state is State.Loading) View.VISIBLE else View.GONE
 
-            val newDataForAdapter: List<Repo> = if (state is State.Loaded) state.repos
-            else listOf()
+            val newDataForAdapter: List<Repo> = if (state is State.Loaded) state.repos else emptyList()
             adapter.submitList(newDataForAdapter)
             rvRepositoriesList.visibility =
                 if (state is State.Loaded) View.VISIBLE else View.GONE

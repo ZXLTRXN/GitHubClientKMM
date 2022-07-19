@@ -34,16 +34,14 @@ class RepositoryInfoViewModel @Inject constructor(
     private val branch: String = requireNotNull(savedStateHandle.get<String>("branch"))
 
     init {
-        getInfo()
+        reloadPressed()
     }
 
     fun signOutPressed() {
         storage.authToken = null
     }
 
-    fun reloadPressed() = getInfo()
-
-    private fun getInfo(
+    fun reloadPressed(
         ownerName: String = this.ownerName,
         repoName: String = this.repoName,
         branch: String = this.branch
