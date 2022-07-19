@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/topAppBarLayout"
+        android:id="@+id/top_app_bar_layout"
         layout="@layout/widget_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topAppBarLayout" />
+        app:layout_constraintTop_toBottomOf="@id/top_app_bar_layout" />
 
     <include
         android:id="@+id/error_layout"

@@ -11,7 +11,7 @@ import shared
 
 extension UIViewController {
     func showErrorView(_ errorView: ErrorView!, for error: CustomError) {
-        var image: UIImage
+        let image: UIImage
         
         if error is CustomError.Connection {
             image = UIImage(named: "connectionError")!
@@ -42,7 +42,7 @@ extension UIViewController {
         errorView.isHidden = true
     }
     
-    func showAlert(title: String, msg: String, sender: UIView) {
+    private func showAlert(title: String, msg: String, sender: UIView) {
         let alertController = UIAlertController(
             title: title,
             message: msg,
