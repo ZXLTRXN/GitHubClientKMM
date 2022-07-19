@@ -45,8 +45,8 @@ class RepositoriesListFragment : Fragment(R.layout.repositories_list_fragment) {
         setUpToolbar(toolbar = binding.topAppBarLayout.topAppBar) {
             viewModel.signOutPressed()
         }
-        val adapter = setUpAdapter()
-        observe(adapter)
+        val adapter = bindAdapter()
+        bindToViewModel(adapter)
 
     }
 
@@ -57,7 +57,7 @@ class RepositoriesListFragment : Fragment(R.layout.repositories_list_fragment) {
     }
 
 
-    private fun setUpAdapter(): RepositoriesAdapter {
+    private fun bindAdapter(): RepositoriesAdapter {
         val adapter = RepositoriesAdapter { owner, name, branch ->
             navigateToDetailInfo(owner, name, branch)
         }
@@ -65,7 +65,7 @@ class RepositoriesListFragment : Fragment(R.layout.repositories_list_fragment) {
         return adapter
     }
 
-    private fun setUpViews(state: State, adapter: RepositoriesAdapter) {
+    private fun bindViewsToState(state: State, adapter: RepositoriesAdapter) {
         with(binding) {
             loadingLayout.root.visibility =
                 if (state is State.Loading) View.VISIBLE else View.GONE
@@ -96,9 +96,9 @@ class RepositoriesListFragment : Fragment(R.layout.repositories_list_fragment) {
         }
     }
 
-    private fun observe(adapter: RepositoriesAdapter) {
+    private fun bindToViewModel(adapter: RepositoriesAdapter) {
         collectLatestLifecycleFlow(viewModel.state) { state ->
-            setUpViews(state, adapter)
+            bindViewsToState(state, adapter)
         }
         binding.errorLayout.retryButton.setOnClickListener { viewModel.reloadPressed() }
         binding.emptyLayout.refreshButton.setOnClickListener { viewModel.reloadPressed() }

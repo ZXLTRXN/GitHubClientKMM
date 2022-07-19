@@ -36,7 +36,7 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observe()
+        bindToViewModel()
     }
 
     override fun onDestroyView() {
@@ -44,7 +44,7 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
         _binding = null
     }
 
-    private fun setUpViews(state: State) {
+    private fun bindViewsToState(state: State) {
         with(binding) {
             inputLayout.error =
                 if (state is State.InvalidInput) state.reason.getString(requireContext()) else null
@@ -56,9 +56,9 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
         }
     }
 
-    private fun observe() {
+    private fun bindToViewModel() {
         collectLatestLifecycleFlow(viewModel.state) { state ->
-            setUpViews(state)
+            bindViewsToState(state)
         }
         binding.submitButton.setOnClickListener { viewModel.signButtonPressed() }
 

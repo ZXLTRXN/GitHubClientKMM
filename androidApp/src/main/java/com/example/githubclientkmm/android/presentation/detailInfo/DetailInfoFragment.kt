@@ -50,7 +50,7 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
         ) {
             viewModel.signOutPressed()
         }
-        observe()
+        bindToViewModel()
     }
 
     override fun onDestroyView() {
@@ -58,9 +58,8 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
         _binding = null
     }
 
-    private fun setUpViews(state: State) {
+    private fun bindReadmeViewsToState(state: State) {
         with(binding) {
-
             progressCircularReadme.visibility =
                 if (state is State.Loaded && state.readmeState is ReadmeState.Loading) View.VISIBLE else View.GONE
 
@@ -92,8 +91,12 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
                 tvReadme.text = if (state is State.Loaded && state.readmeState is ReadmeState.Empty)
                     getString(R.string.empty_readme) else null
             }
+        }
+    }
 
-
+    private fun bindViewsToState(state: State) {
+        bindReadmeViewsToState(state)
+        with(binding) {
             errorLayout.root.visibility = if (state is State.Error) View.VISIBLE else View.GONE
             errorLayout.tvLabelError.text =
                 if (state is State.Error) state.errorLabel.getString(requireContext()) else null
@@ -131,9 +134,9 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
         }
     }
 
-    private fun observe() {
+    private fun bindToViewModel() {
         collectLatestLifecycleFlow(viewModel.state) { state ->
-            setUpViews(state)
+            bindViewsToState(state)
         }
         binding.errorLayout.retryButton.setOnClickListener { viewModel.reloadPressed() }
         binding.errorReadmeLayout.retryButton.setOnClickListener { viewModel.reloadPressed() }
