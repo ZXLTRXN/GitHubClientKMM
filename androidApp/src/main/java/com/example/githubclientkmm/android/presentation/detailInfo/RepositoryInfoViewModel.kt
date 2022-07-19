@@ -18,7 +18,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -51,19 +50,24 @@ class RepositoryInfoViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             _state.value = State.Loading
-            val (repoRes: Result<Repo>, readmeRes: Result<String>) = coroutineScope {
+            coroutineScope {
                 val repo = async { repository.getRepositoryResult(ownerName, repoName) }
-                val readme =
-                    async { repository.getRepositoryReadmeResult(ownerName, repoName, branch) }
-                repo.await() to readme.await()
-            }
+                val readme = async {
+                    repository
+                        .getRepositoryReadmeResult(ownerName, repoName, branch)
+                }
+                repo.await()
+                    .onSuccess { repo ->
+                        val readmeState = if (readme.isActive) ReadmeState.Loading
+                        else defineReadmeState(readme.await())
+                        _state.value = State.Loaded(repo, readmeState)
+                        if (readmeState is ReadmeState.Loading)
+                            _state.value = State.Loaded(repo, defineReadmeState(readme.await()))
 
-            repoRes.onSuccess { repo ->
-                val readmeState = defineReadmeState(readmeRes)
-                _state.value = State.Loaded(repo, readmeState)
-            }.onFailure { exception ->
-                val (icon, label, message) = makeErrorMessage(exception)
-                _state.value = State.Error(icon, label, message)
+                    }.onFailure { exception ->
+                        val (icon, label, message) = makeErrorMessage(exception)
+                        _state.value = State.Error(icon, label, message)
+                    }
             }
         }
     }
@@ -77,7 +81,7 @@ class RepositoryInfoViewModel @Inject constructor(
             val (icon, label, message) = makeErrorMessage(exception)
             return ReadmeState.Error(icon, label, message)
         }
-        return ReadmeState.Empty // unattainable, compiler requires return statement
+        throw Error("unattainable code reached in RepositoryInfoViewModel.defineReadmeState()")
     }
 
     sealed interface State {
