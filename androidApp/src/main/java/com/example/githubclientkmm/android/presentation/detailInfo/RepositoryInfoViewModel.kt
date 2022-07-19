@@ -50,32 +50,28 @@ class RepositoryInfoViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             _state.value = State.Loading
-            coroutineScope {
-                val repo = async { repository.getRepositoryResult(ownerName, repoName) }
-                val readme = async {
-                    repository
-                        .getRepositoryReadmeResult(ownerName, repoName, branch)
-                }
-                repo.await()
-                    .onSuccess { repo ->
-                        val readmeState = if (readme.isActive) ReadmeState.Loading
-                        else defineReadmeState(readme.await())
-                        _state.value = State.Loaded(repo, readmeState)
-                        if (readmeState is ReadmeState.Loading)
-                            _state.value = State.Loaded(repo, defineReadmeState(readme.await()))
 
-                    }.onFailure { throwable ->
-                        val (icon, label, message) = makeErrorMessage(throwable as Exception)
-                        _state.value = State.Error(icon, label, message)
-                    }
+            val repo = async { repository.getRepositoryResult(ownerName, repoName) }
+            val readme = async {
+                repository.getRepositoryReadmeResult(ownerName, repoName, branch)
             }
+            repo.await()
+                .onSuccess { repo ->
+                    val readmeState =
+                        if (readme.isActive) ReadmeState.Loading else defineReadmeState(readme.await())
+                    _state.value = State.Loaded(repo, readmeState)
+                    if (readmeState is ReadmeState.Loading) _state.value =
+                        State.Loaded(repo, defineReadmeState(readme.await()))
+                }.onFailure { throwable ->
+                    val (icon, label, message) = makeErrorMessage(throwable as Exception)
+                    _state.value = State.Error(icon, label, message)
+                }
         }
     }
 
     private fun defineReadmeState(readmeRes: Result<String>): ReadmeState {
         readmeRes.onSuccess { readme ->
-            return if (readme.isEmpty()) ReadmeState.Empty
-            else ReadmeState.Loaded(readme)
+            return if (readme.isEmpty()) ReadmeState.Empty else ReadmeState.Loaded(readme)
         }.onFailure { throwable ->
             if (throwable is NotFoundException) return ReadmeState.Empty
             val (icon, label, message) = makeErrorMessage(throwable as Exception)
@@ -109,6 +105,4 @@ class RepositoryInfoViewModel @Inject constructor(
 
         data class Loaded(val markdown: String) : ReadmeState
     }
-
-
 }

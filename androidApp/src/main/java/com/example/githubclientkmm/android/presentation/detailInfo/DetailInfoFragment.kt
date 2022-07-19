@@ -95,7 +95,6 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
     }
 
     private fun bindViewsToState(state: State) {
-        bindReadmeViewsToState(state)
         with(binding) {
             errorLayout.root.visibility = if (state is State.Error) View.VISIBLE else View.GONE
             errorLayout.tvLabelError.text =
@@ -129,13 +128,14 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
             if (state is State.Loaded) {
                 tvLink.setOnClickListener { openUrl(state.githubRepo.htmlUrl) }
             } else {
-                tvLink.setOnClickListener { }
+                tvLink.setOnClickListener { null }
             }
         }
     }
 
     private fun bindToViewModel() {
         collectLatestLifecycleFlow(viewModel.state) { state ->
+            bindReadmeViewsToState(state)
             bindViewsToState(state)
         }
         binding.errorLayout.retryButton.setOnClickListener { viewModel.reloadPressed() }
