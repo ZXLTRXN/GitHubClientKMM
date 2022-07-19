@@ -3,6 +3,7 @@ package com.example.githubclientkmm.android.presentation.auth
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.example.githubclientkmm.android.R
 import com.example.githubclientkmm.data.network.RequestCode
@@ -34,13 +35,7 @@ class ErrorDialogFragment() : DialogFragment() {
         private const val MESSAGE_KEY = "message"
         private const val CODE_KEY = "code"
 
-        fun createArguments(message: String, code: Int? = null): Bundle {
-            val args = Bundle()
-            code?.let {
-                args.putInt(CODE_KEY, it)
-            }
-            args.putString(MESSAGE_KEY, message)
-            return args
-        }
+        fun createArguments(message: String, code: Int? = null): Bundle =
+            bundleOf(MESSAGE_KEY to message, CODE_KEY to code)
     }
 }

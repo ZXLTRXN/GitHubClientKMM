@@ -105,8 +105,9 @@ class RepositoriesListFragment : Fragment(R.layout.repositories_list_fragment) {
     }
 
     private fun navigateToDetailInfo(ownerName: String, repoName: String, branch: String) {
-        val action = RepositoriesListFragmentDirections
-            .toDetailInfoFragment(ownerName = ownerName, repoName = repoName, branch = branch)
-        this.findNavController().navigate(action)
+        this.findNavController().navigate(
+            RepositoriesListFragmentDirections
+                .toDetailInfoFragment(ownerName = ownerName, repoName = repoName, branch = branch)
+        )
     }
 }

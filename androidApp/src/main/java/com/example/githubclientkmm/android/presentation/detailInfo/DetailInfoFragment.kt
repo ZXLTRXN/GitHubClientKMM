@@ -143,10 +143,10 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
         try {
             val intent = Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(url) }
             startActivity(intent)
-        } catch (e: NullPointerException) {
-            showToast(getString(R.string.bad_url_repo))
         } catch (e: ActivityNotFoundException) {
             showToast(getString(R.string.browser_unavailable))
+        } catch (e: Exception) {
+            showToast(getString(R.string.bad_url_repo))
         }
     }
 }
