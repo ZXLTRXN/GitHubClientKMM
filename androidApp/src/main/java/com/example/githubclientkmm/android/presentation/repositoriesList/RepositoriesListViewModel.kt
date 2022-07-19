@@ -26,21 +26,20 @@ class RepositoriesListViewModel @Inject constructor(
     val state: StateFlow<State> = _state
 
     init {
-        getRepos()
+        reloadPressed()
     }
 
     fun signOutPressed() {
         storage.authToken = null
     }
 
-    fun reloadPressed() = getRepos()
-
-    private fun getRepos() {
+    fun reloadPressed() {
         viewModelScope.launch {
             _state.value = State.Loading
             repository.getRepositoriesResult().onSuccess { repos ->
-                _state.value = if (repos.isEmpty()) State.Empty
-                else State.Loaded(repos = colorPicker.addLanguageColor(repos))
+                _state.value = if (repos.isEmpty()) State.Empty else State.Loaded(
+                    repos = colorPicker.addLanguageColor(repos)
+                )
             }.onFailure { throwable ->
                 val (icon: Int, label: LocalizeString, message: LocalizeString) =
                     makeErrorMessage(throwable as Exception)

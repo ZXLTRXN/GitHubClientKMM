@@ -36,17 +36,13 @@ class RepositoriesAdapter(
             } catch (e: IllegalArgumentException) {
                 defaultColorId
             }
-            binding.repoLanguage.run {
-                this.text = text
-                setTextColor(resultColorId)
-            }
+            binding.repoLanguage.text = text
+            binding.repoLanguage.setTextColor(resultColorId)
         }
 
         private fun bindDescription(text: String?) {
-            binding.repoDescription.run {
-                visibility = if (text == null) View.GONE else View.VISIBLE
-                this.text = text
-            }
+            binding.repoDescription.visibility = if (text == null) View.GONE else View.VISIBLE
+            binding.repoDescription.text = text
         }
     }
 
