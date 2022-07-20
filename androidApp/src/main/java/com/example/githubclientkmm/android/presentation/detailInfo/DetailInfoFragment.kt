@@ -78,18 +78,17 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
                     resources,
                     state.readmeState.errorIcon,
                     null
-                )
-                else null
+                ) else null
             errorReadmeLayout.ivError.setImageDrawable(readmeErrorDrawable)
 
-            if (state is State.Loaded && state.readmeState is ReadmeState.Loaded) {
-                context?.let { context ->
-                    val markwon = Markwon.create(context)
-                    markwon.setMarkdown(tvReadme, state.readmeState.markdown)
-                }
-            } else {
-                tvReadme.text = if (state is State.Loaded && state.readmeState is ReadmeState.Empty)
-                    getString(R.string.empty_readme) else null
+            tvReadme.text = if (state is State.Loaded && state.readmeState is ReadmeState.Empty)
+                getString(R.string.empty_readme) else null
+
+            val markwon: Markwon? = if (state is State.Loaded && state.readmeState is ReadmeState.Loaded)
+                Markwon.create(requireContext()) else null
+            markwon?.let { markwon ->
+                val readmeState: ReadmeState.Loaded = (state as State.Loaded).readmeState as ReadmeState.Loaded
+                markwon.setMarkdown(tvReadme, readmeState.markdown)
             }
         }
     }
@@ -106,8 +105,7 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
                     resources,
                     state.errorIcon,
                     null
-                )
-                else null
+                ) else null
             errorLayout.ivError.setImageDrawable(errorDrawable)
 
             loadingLayout.root.visibility =
