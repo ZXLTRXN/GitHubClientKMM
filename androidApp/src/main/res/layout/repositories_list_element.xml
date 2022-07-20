@@ -16,7 +16,6 @@
         android:textAppearance="@style/TextAppearance.App.Text.Label"
         android:textColor="?attr/colorPrimary"
         app:layout_constraintEnd_toStartOf="@+id/repo_language"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +26,6 @@
         android:textAppearance="@style/TextAppearance.App.Text"
         app:layout_constraintBottom_toBottomOf="@+id/repo_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/repo_name"
         app:layout_constraintTop_toTopOf="@+id/repo_name" />
 

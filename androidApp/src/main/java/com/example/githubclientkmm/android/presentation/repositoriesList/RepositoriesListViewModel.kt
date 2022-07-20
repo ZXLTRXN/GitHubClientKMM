@@ -23,7 +23,7 @@ class RepositoriesListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
-    val state: StateFlow<State> = _state
+    val state: StateFlow<State> get() = _state
 
     init {
         reloadPressed()

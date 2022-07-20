@@ -113,7 +113,7 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
             loadingLayout.root.visibility =
                 if (state is State.Loading) View.VISIBLE else View.GONE
 
-            content.visibility = if (state is State.Loaded) View.VISIBLE else View.GONE
+            scrollViewContent.visibility = if (state is State.Loaded) View.VISIBLE else View.GONE
             allSections.visibility = if (state is State.Loaded) View.VISIBLE else View.GONE
             tvLicense.text =
                 if (state is State.Loaded) state.githubRepo.license
@@ -125,11 +125,7 @@ class DetailInfoFragment : Fragment(R.layout.detail_info_fragment) {
             tvWatchers.text =
                 if (state is State.Loaded) state.githubRepo.watchers.toString() else null
             tvLink.text = if (state is State.Loaded) state.githubRepo.htmlUrl else null
-            if (state is State.Loaded) {
-                tvLink.setOnClickListener { openUrl(state.githubRepo.htmlUrl) }
-            } else {
-                tvLink.setOnClickListener { null }
-            }
+            tvLink.setOnClickListener { if (state is State.Loaded) openUrl(state.githubRepo.htmlUrl) else null}
         }
     }
 

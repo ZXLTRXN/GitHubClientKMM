@@ -3,7 +3,6 @@ package com.example.githubclientkmm.android.presentation.detailInfo
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-
 import com.example.githubclientkmm.android.utils.LocalizeString
 import com.example.githubclientkmm.android.utils.makeErrorMessage
 import com.example.githubclientkmm.data.AppRepository
@@ -15,7 +14,6 @@ import com.example.githubclientkmm.data.network.NotFoundException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -27,7 +25,7 @@ class RepositoryInfoViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
-    val state: StateFlow<State> = _state
+    val state: StateFlow<State> get() = _state
 
     private val ownerName: String = requireNotNull(savedStateHandle.get<String>("ownerName"))
     private val repoName: String = requireNotNull(savedStateHandle.get<String>("repoName"))
@@ -41,11 +39,7 @@ class RepositoryInfoViewModel @Inject constructor(
         storage.authToken = null
     }
 
-    fun reloadPressed(
-        ownerName: String = this.ownerName,
-        repoName: String = this.repoName,
-        branch: String = this.branch
-    ) {
+    fun reloadPressed() {
         viewModelScope.launch {
             _state.value = State.Loading
 
