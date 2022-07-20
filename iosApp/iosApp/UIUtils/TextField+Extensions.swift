@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITextField {
-    func setBorderColor(_ color: CGColor? = UIColor(named: "TextFieldBorderColor")?.cgColor, _ borderRadius: CGFloat = 8) {
+    func setBorderColor(_ color: CGColor, _ borderRadius: CGFloat = 8) {
         self.layer.borderWidth = 1.0
         self.layer.cornerRadius = borderRadius
         self.layer.borderColor = color

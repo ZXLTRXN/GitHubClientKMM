@@ -39,7 +39,7 @@ class AuthViewController: UIViewController {
     
     private func setUI() {
         tokenTextField.placeholder = NSLocalizedString("auth.tokenTextField.placeholder", comment: "")
-        tokenTextField.setBorderColor()
+        tokenTextField.setBorderColor(UIColor(named: "TextFieldBorderColor")!.cgColor)
         
         signInButton.setTitle(NSLocalizedString("auth.signInButton.title", comment: ""), for: .normal)
         signInButton.setTitleColor(signInButton.backgroundColor, for: .disabled)
@@ -59,7 +59,7 @@ class AuthViewController: UIViewController {
     @IBAction private func signInTapped(_ sender: UIButton) {
         if !validationEnabled {
             validationEnabled = true
-            checkValidation(onValid: setIdleState)
+            bindToEditState()
         }
         if editState == .valid {
             guard let token = tokenTextField.text else { return }
@@ -77,30 +77,41 @@ class AuthViewController: UIViewController {
     }
     
     @IBAction private func editingChanged(_ sender: UITextField) {
-        checkValidation(onValid: setIdleState)
+        bindToEditState()
     }
     
-    private func checkValidation(onValid: () -> Void) {
+    private func applyToTextField(errorMessage: String?, borderColor: UIColor) {
+        tokenTextField.setBorderColor(borderColor.cgColor)
+        errorLabel.isHidden = errorMessage == nil
+        errorLabel.text = errorMessage
+    }
+    
+    private func bindToEditState() {
+        let errorMessage: String?
+        let borderColor: UIColor
         if validationEnabled {
             editState = validateToken(tokenTextField.text)
             switch (editState) {
             case .invalid:
-                setTokenErrorState(message: NSLocalizedString("auth.inputErrorLabel.invalidToken.title", comment: ""))
+                errorMessage = NSLocalizedString("auth.inputErrorLabel.invalidToken.title", comment: "")
+                borderColor = UIColor(named: "ErrorRed")!
             case .empty:
-                setTokenErrorState(message: NSLocalizedString("auth.inputErrorLabel.emptyToken.title", comment: ""))
+                errorMessage = NSLocalizedString("auth.inputErrorLabel.emptyToken.title", comment: "")
+                borderColor = UIColor(named: "ErrorRed")!
             case .valid:
-                onValid()
+                errorMessage = nil
+                borderColor = UIColor(named: "DefaultBlue")!
             }
         } else {
-            onValid()
+            errorMessage = nil
+            borderColor = UIColor(named: "DefaultBlue")!
         }
+        applyToTextField(errorMessage: errorMessage, borderColor: borderColor)
     }
     
     private func validateToken(_ token: String?) -> EditState {
-        guard token?.isEmpty == false else {
-            return .empty
-        }
-        let regularExpression = "[A-Za-z0-9_]{20,40}"
+        guard token?.isEmpty == false else { return .empty }
+        let regularExpression = "[A-Za-z0-9_]{1,40}"
         let predicate = NSPredicate(format:"SELF MATCHES %@", regularExpression)
         if predicate.evaluate(with: token){
             return .valid
@@ -108,29 +119,15 @@ class AuthViewController: UIViewController {
             return .invalid
         }
     }
-    
-    private func setTokenErrorState(message: String) {
-        tokenTextField.setBorderColor(UIColor(named: "ErrorRed")?.cgColor)
-        errorLabel.isHidden = false
-        errorLabel.text = message
-    }
-    
-    private func setIdleState() {
-        tokenTextField.setBorderColor(UIColor(named: "DefaultBlue")?.cgColor)
-        errorLabel.isHidden = true
-        errorLabel.text = nil
-    }
 }
 
 extension AuthViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        checkValidation(onValid: setIdleState)
+        bindToEditState()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        checkValidation(){
-            textField.setBorderColor()
-        }
+        applyToTextField(errorMessage: nil, borderColor: UIColor(named: "TextFieldBorderColor")!)
     }
 }
 
