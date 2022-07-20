@@ -5,11 +5,11 @@ import java.util.regex.Pattern
 
 fun String.validateToken(): ValidationState {
     val pattern = "^[a-zA-Z0-9_-]{0,45}$"
-    return if (this.isEmpty()) ValidationState.EMPTY
+    return if (this.isEmpty()) ValidationState.Empty
     else {
         val matcher = Pattern.compile(pattern).matcher(this)
-        if (matcher.matches()) ValidationState.VALID
-        else ValidationState.INVALID
+        if (matcher.matches()) ValidationState.Valid
+        else ValidationState.Invalid
     }
 
 }

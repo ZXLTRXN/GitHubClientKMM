@@ -54,14 +54,14 @@ class AuthViewModel @Inject constructor(
     private fun validate(): ValidationState {
         val validationResult = token.value.validateToken()
         when (validationResult) {
-            ValidationState.INVALID -> {
-                _state.value = (State.InvalidInput(validationResult.reason!!))
+            ValidationState.Invalid -> {
+                _state.value = State.InvalidInput(validationResult.reason)
             }
-            ValidationState.VALID -> {
+            ValidationState.Valid -> {
                 _state.value = State.Idle
             }
-            ValidationState.EMPTY -> {
-                _state.value = (State.InvalidInput(validationResult.reason!!))
+            ValidationState.Empty -> {
+                _state.value = State.InvalidInput(validationResult.reason)
             }
         }
         return validationResult
@@ -92,9 +92,22 @@ class AuthViewModel @Inject constructor(
         object RouteToMain : Action
     }
 
-    enum class ValidationState(val reason: LocalizeString?) {
-        EMPTY(LocalizeString.Resource(R.string.empty_input)),
-        INVALID(LocalizeString.Resource(R.string.invalid_input)),
-        VALID(null)
+    sealed interface ValidationState {
+        val reason: LocalizeString
+
+        object Empty : ValidationState {
+            override val reason: LocalizeString
+                get() = LocalizeString.Resource(R.string.empty_input)
+        }
+
+        object Valid : ValidationState {
+            override val reason: LocalizeString
+                get() = LocalizeString.Raw("")
+        }
+
+        object Invalid : ValidationState {
+            override val reason: LocalizeString
+                get() = LocalizeString.Resource(R.string.invalid_input)
+        }
     }
 }
